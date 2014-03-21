@@ -42,3 +42,27 @@ gem 'jbuilder', '~> 1.2'
 
 # Use debugger
 # gem 'debugger', group: [:development, :test]
+
+gem 'cancan'
+gem 'devise'
+gem 'devise_invitable'
+gem 'figaro'
+gem 'foundation-rails'
+gem 'haml-rails'
+gem 'rolify'
+gem 'simple_form'
+
+group :development do
+  gem 'better_errors'
+  gem 'binding_of_caller', :platforms=>[:mri_19, :mri_20, :rbx]
+  gem 'html2haml'
+  gem 'quiet_assets'
+  gem 'rails_layout'
+end
+
+group :test do
+  gem 'capybara'
+  gem 'minitest-spec-rails'
+  gem 'minitest-wscolor'
+end
+
