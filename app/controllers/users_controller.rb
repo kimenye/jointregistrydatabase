@@ -30,4 +30,11 @@ class UsersController < ApplicationController
       redirect_to users_path, :notice => "Can't delete yourself."
     end
   end
+
+  # def approve(user)
+  #   @user = user #.find(params[:id])
+  #   @user.approved = !@user.approved
+  #   @user.save!
+  #   redirect_to dashboard_index_path, notice: "User has been approved!"
+  # end
 end
