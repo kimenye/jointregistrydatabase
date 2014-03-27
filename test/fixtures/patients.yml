@@ -1,0 +1,23 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  medical_record_number: 1
+  name: MyString
+  date_of_birth: 2014-03-27
+  gender: MyString
+  weight: 1
+  height: 1
+  race: MyString
+  postcode: MyString
+  nhif_number: MyString
+
+two:
+  medical_record_number: 1
+  name: MyString
+  date_of_birth: 2014-03-27
+  gender: MyString
+  weight: 1
+  height: 1
+  race: MyString
+  postcode: MyString
+  nhif_number: MyString

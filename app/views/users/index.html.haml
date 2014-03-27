@@ -5,18 +5,16 @@
       %tr
         %th Username
         %th Email
-        %th Registered
-        %th Role
-        %th
-        %th
+        %th Approved?
     %tbody
-      - @users.each do |user|
+      - @hospital_admins.each do |hospital_admin|
         %tr
-          %td= link_to user.name, user
-          %td= user.email
-          %td= user.created_at.to_date
-          %td= user.roles.first.name.titleize unless user.roles.first.nil?
-          %td
-            %a.btn.btn-mini{"data-toggle" => "modal", :href => "#role-options-#{user.id}", :type => "button"} Change role
-            = render user
-          %td= link_to("Delete user", user_path(user), :data => { :confirm => "Are you sure?" }, :method => :delete, :class => 'btn btn-mini') unless user == current_user
+          %td= hospital_admin.email
+          %td= hospital_admin.created_at.to_date
+          %td= link_to "Approve", user_approve_path(hospital_admin), method: :post, data: { confirm: 'Are you sure?' }
+
+      - @surgeons.each do |surgeon|
+        %tr
+          %td= surgeon.name
+          %td= surgeon.email
+          %td= link_to "Approve", user_approve_path(surgeon), method: :post, data: { confirm: 'Are you sure?' }

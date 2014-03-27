@@ -1,0 +1,35 @@
+%h1 Listing patients
+
+%table
+  %tr
+    %th Medical record number
+    %th Name
+    %th Date of birth
+    %th Gender
+    %th Weight
+    %th Height
+    %th Race
+    %th Postcode
+    %th Nhif number
+    %th
+    %th
+    %th
+
+  - @patients.each do |patient|
+    %tr
+      %td= patient.medical_record_number
+      %td= patient.name
+      %td= patient.date_of_birth
+      %td= patient.gender
+      %td= patient.weight
+      %td= patient.height
+      %td= patient.race
+      %td= patient.postcode
+      %td= patient.nhif_number
+      %td= link_to 'Show', patient
+      %td= link_to 'Edit', edit_patient_path(patient)
+      %td= link_to 'Destroy', patient, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Patient', new_patient_path

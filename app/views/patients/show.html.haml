@@ -1,0 +1,33 @@
+%p#notice= notice
+
+%p
+  %b Medical record number:
+  = @patient.medical_record_number
+%p
+  %b Name:
+  = @patient.name
+%p
+  %b Date of birth:
+  = @patient.date_of_birth
+%p
+  %b Gender:
+  = @patient.gender
+%p
+  %b Weight:
+  = @patient.weight
+%p
+  %b Height:
+  = @patient.height
+%p
+  %b Race:
+  = @patient.race
+%p
+  %b Postcode:
+  = @patient.postcode
+%p
+  %b Nhif number:
+  = @patient.nhif_number
+
+= link_to 'Edit', edit_patient_path(@patient)
+\|
+= link_to 'Back', patients_path
