@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-ruby '1.9.3'
+ruby '2.0.0'
 gem 'rails', '4.0.0'
 gem 'sqlite3'
 gem 'sass-rails', '~> 4.0.0'
@@ -24,7 +24,15 @@ group :development do
   gem 'rails_layout'
 end
 group :test do
-  gem 'capybara'
-  gem 'minitest-spec-rails'
-  gem 'minitest-wscolor'
+  # gem 'minitest-rails'
+  # gem 'capybara'
+  # gem 'minitest-spec-rails'
+  # gem 'minitest-wscolor'
+  gem 'minitest-rails'
+	gem 'minitest-rails-capybara'
+	gem 'minitest-colorize'
+	gem 'minitest-focus'
+	gem 'minitest-spec-rails'
+	gem 'capybara_minitest_spec'
+	gem 'turn'
 end

@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	<p>Dear Super Admin,</p>
+	<p>
+		A new user has signed up on the site and is awaiting approval. Click <%= link_to "here", "http://localhost:3000#{hospital_admin_approve_path(@user)}", method: :post, data: { confirm: 'Are you sure?' } %> to approve them.
+	</p>
+</body>
+</html>

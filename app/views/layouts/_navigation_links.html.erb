@@ -1,1 +1,9 @@
 <%# add navigation links to this file %>
+<% if super_admin_signed_in? %>
+   <li><%= link_to 'Logout', destroy_super_admin_session_path, :method=>'delete' %></li>
+ <% else %>
+   <li><%= link_to 'Login', new_super_admin_session_path %></li>
+ <% end %>
+ <% if super_admin_signed_in? %>
+   <li><%= link_to 'Edit account', edit_super_admin_registration_path %></li>
+ <% end %>
