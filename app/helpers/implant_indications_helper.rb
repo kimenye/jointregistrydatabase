@@ -1,0 +1,2 @@
+module ImplantIndicationsHelper
+end

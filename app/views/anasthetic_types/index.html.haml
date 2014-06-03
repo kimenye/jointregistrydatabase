@@ -1,0 +1,17 @@
+%h1 Listing anasthetic_types
+
+%table
+  %tr
+    %th
+    %th
+    %th
+
+  - @anasthetic_types.each do |anasthetic_type|
+    %tr
+      %td= link_to 'Show', anasthetic_type
+      %td= link_to 'Edit', edit_anasthetic_type_path(anasthetic_type)
+      %td= link_to 'Destroy', anasthetic_type, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Anasthetic type', new_anasthetic_type_path

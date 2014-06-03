@@ -1,0 +1,33 @@
+%h1 Listing surgeries
+
+%table
+  %tr
+    %th Patient
+    %th Surgeon
+    %th Date of surgery
+    %th Side
+    %th Anasthetic type
+    %th Chemical
+    %th Mechanical
+    %th Implant indication
+    %th
+    %th
+    %th
+
+  - @surgeries.each do |surgery|
+    %tr
+      %td= surgery.patient_id
+      %td= surgery.surgeon_id
+      %td= surgery.date_of_surgery
+      %td= surgery.side
+      %td= surgery.anasthetic_type_id
+      %td= surgery.chemical_id
+      %td= surgery.mechanical_id
+      %td= surgery.implant_indication_id
+      %td= link_to 'Show', surgery
+      %td= link_to 'Edit', edit_surgery_path(surgery)
+      %td= link_to 'Destroy', surgery, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Surgery', new_surgery_path

@@ -9,9 +9,13 @@
     = javascript_include_tag "vendor/modernizr"
     = javascript_include_tag "application", "data-turbolinks-track" => true
     = csrf_meta_tags
-  %body
-    %header
-      = render 'layouts/navigation'
+  %body{style: "background-color: white;"}
+    %header.row
+      .large-6.column
+        %img.left(src = "/assets/logo.png")
+      .large-6.column
+        = render 'layouts/navigation'
     %main{:role => "main"}
       = render 'layouts/messages'
-      = yield
+      .row
+        = yield

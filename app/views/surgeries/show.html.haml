@@ -1,0 +1,30 @@
+%p#notice= notice
+
+%p
+  %b Patient:
+  = @surgery.patient_id
+%p
+  %b Surgeon:
+  = @surgery.surgeon_id
+%p
+  %b Date of surgery:
+  = @surgery.date_of_surgery
+%p
+  %b Side:
+  = @surgery.side
+/ %p
+/   %b Anasthetic type:
+/   = @surgery.anasthetic_type_id
+/ %p
+/   %b Chemical:
+/   = @surgery.chemical_id
+/ %p
+/   %b Mechanical:
+/   = @surgery.mechanical_id
+/ %p
+/   %b Implant indication:
+/   = @surgery.implant_indication_id
+
+= link_to 'Edit', edit_surgery_path(@surgery)
+\|
+= link_to 'Back', surgeries_path

@@ -1,0 +1,2 @@
+module AnastheticTypesHelper
+end

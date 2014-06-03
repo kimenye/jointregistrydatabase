@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  name: MyString
+  procedure_type: MyString
+  surgery_id: 
+
+two:
+  name: MyString
+  procedure_type: MyString
+  surgery_id: 

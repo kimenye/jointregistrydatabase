@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  surgery_id: 
+  manufacturer_id: 
+  implant_id: 
+  dimension_id: 
+  implant_size_id: 
+
+two:
+  surgery_id: 
+  manufacturer_id: 
+  implant_id: 
+  dimension_id: 
+  implant_size_id: 

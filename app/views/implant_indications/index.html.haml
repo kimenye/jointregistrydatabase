@@ -1,0 +1,17 @@
+%h1 Listing implant_indications
+
+%table
+  %tr
+    %th
+    %th
+    %th
+
+  - @implant_indications.each do |implant_indication|
+    %tr
+      %td= link_to 'Show', implant_indication
+      %td= link_to 'Edit', edit_implant_indication_path(implant_indication)
+      %td= link_to 'Destroy', implant_indication, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Implant indication', new_implant_indication_path

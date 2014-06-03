@@ -1,0 +1,17 @@
+%h1 Listing mechanicals
+
+%table
+  %tr
+    %th
+    %th
+    %th
+
+  - @mechanicals.each do |mechanical|
+    %tr
+      %td= link_to 'Show', mechanical
+      %td= link_to 'Edit', edit_mechanical_path(mechanical)
+      %td= link_to 'Destroy', mechanical, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Mechanical', new_mechanical_path

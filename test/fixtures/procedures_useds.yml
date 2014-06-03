@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  surgery_id: 
+  patient_procedure_id: 
+
+two:
+  surgery_id: 
+  patient_procedure_id: 

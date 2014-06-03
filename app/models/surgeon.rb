@@ -3,6 +3,7 @@ class Surgeon < ActiveRecord::Base
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
+  has_many :surgeries
 
   after_create :send_super_admin_mail
   def send_super_admin_mail

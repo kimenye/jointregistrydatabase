@@ -2,12 +2,11 @@
 @import "foundation";
 
 // override for the 'Home' navigation link
-.top-bar .name {
-  font-size: rem-calc(13);
-  line-height: 45px; }
-.top-bar .name a {
+.top-bar{ background:#fff;}
+.top-bar  a {
   font-weight: normal;
-  color: white;
+  color: black;
+  line-height:45px;
   padding: 0 15px; }
 
 // THESE ARE EXAMPLES YOU CAN MODIFY

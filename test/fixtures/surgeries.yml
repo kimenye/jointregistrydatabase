@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  patient_id: 
+  surgeon_id: 
+  date_of_surgery: 2014-05-08
+  side: MyString
+
+two:
+  patient_id: 
+  surgeon_id: 
+  date_of_surgery: 2014-05-08
+  side: MyString

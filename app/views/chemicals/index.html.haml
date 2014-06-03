@@ -1,0 +1,17 @@
+%h1 Listing chemicals
+
+%table
+  %tr
+    %th
+    %th
+    %th
+
+  - @chemicals.each do |chemical|
+    %tr
+      %td= link_to 'Show', chemical
+      %td= link_to 'Edit', edit_chemical_path(chemical)
+      %td= link_to 'Destroy', chemical, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Chemical', new_chemical_path

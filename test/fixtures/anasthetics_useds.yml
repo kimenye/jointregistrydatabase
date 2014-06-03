@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  surgery_id: 
+  anasthetic_type_id: 
+
+two:
+  surgery_id: 
+  anasthetic_type_id: 

@@ -4,13 +4,13 @@
   .form-inputs
     = f.input :medical_record_number
     = f.input :name
-    = f.input :date_of_birth
+    = f.input :date_of_birth, as: :string
     = f.input :gender
     = f.input :weight
     = f.input :height
-    = f.input :race
-    = f.input :postcode
-    = f.input :nhif_number
+    / = f.input :race
+    / = f.input :postcode
+    = f.input :id_number
 
   .form-actions
     = f.button :submit

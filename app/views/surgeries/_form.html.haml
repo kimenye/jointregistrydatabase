@@ -1,0 +1,70 @@
+%br
+.row
+  = simple_form_for(@surgery) do |f|
+    = f.error_notification
+    .form-inputs
+      %h6 General Details
+      .row
+        .large-6.columns
+          = "Patient"
+          = collection_select(:surgery, :patient_id, Patient.all, :id, :name)
+        .large-6.columns
+          = "Surgeon"
+          = collection_select(:surgery, :surgeon_id, Surgeon.all, :id, :name)
+      .row
+        .large-6.columns
+          = "Hospital"
+          = collection_select(:surgery, :hospital_id, Hospital.all, :id, :name)
+        .large-6.columns
+          = "Date of Surgery"
+          = f.input :date_of_surgery, as: :string, :label => false
+      %h6 Procedure Details
+      .row
+        .large-6.columns
+          = "Side"
+          = f.input :side, collection: ["Right", "Left"], :include_blank => false, :label => false
+        .large-6.columns
+          = "Patient Position"
+          = f.input :patient_position, collection: ["Lateral", "Supine"], :include_blank => false, :label => false
+      .row
+        .large-6.columns
+          = "Total Hip Approach"
+          = f.input :total_hip_approach, collection: ["Lateral", "Posterior", "Anterior"], :include_blank => false, :label => false
+        .large-6.columns
+          = "Patient Procedure"
+          = collection_select(:patient_procedure, :patient_procedure_id, PatientProcedure.all, :id, :name)
+      .row
+        .large-6.columns    
+          = "Anasthetic Type"
+          = collection_select(:anasthetic_type, :anasthetic_type_id, AnastheticType.all, :id, :anasthetic_type)
+        .large-6.columns
+          = "Mechanical"
+          = collection_select(:mechanical, :mechanical_id, Mechanical.all, :id, :name)
+      .row
+        .large-12.columns
+          = "Chemical"
+          = collection_select(:chemical, :chemical_id, Chemical.all, :id, :name)
+      .row
+        .large-12.columns
+          %h6 Implant Details
+          %br
+          = "Implant Indication"
+          - @indications.each do |indication|
+            = check_box_tag "indications[]", indication.name
+            = indication.name
+      %br
+      .row
+        .large-3.columns
+          = "Manufacturer"
+          = collection_select(:manufacturer, :manufacturer_id, Manufacturer.all, :id, :name)
+        .large-3.columns
+          = "Implant"
+          = collection_select(:implant, :implant_id, Implant.all, :id, :name)
+        .large-3.columns
+          = "Dimensions"
+          = collection_select(:dimension, :dimension_id, Dimension.all, :id, :dimension_type)
+        .large-3.columns
+          = "Size"
+          = collection_select(:implant_size, :implant_size_id, ImplantSize.all, :id, :measurement)
+    .form-actions
+      = f.button :submit
