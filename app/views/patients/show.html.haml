@@ -18,15 +18,15 @@
 %p
   %b Height:
   = @patient.height
-%p
-  %b Race:
-  = @patient.race
+/ %p
+/   %b Race:
+/   = @patient.race
 %p
   %b Postcode:
   = @patient.postcode
 %p
-  %b Nhif number:
-  = @patient.nhif_number
+  %b Medical record number::
+  = @patient.medical_record_number
 
 = link_to 'Edit', edit_patient_path(@patient)
 \|
