@@ -16,14 +16,14 @@
 
   - @surgeries.each do |surgery|
     %tr
-      %td= surgery.patient_id
-      %td= surgery.surgeon_id
+      %td= surgery.patient.name
+      %td= surgery.surgeon.name
       %td= surgery.date_of_surgery
       %td= surgery.side
-      %td= surgery.anasthetic_type_id
-      %td= surgery.chemical_id
-      %td= surgery.mechanical_id
-      %td= surgery.implant_indication_id
+      %td= surgery.anasthetic_types.each {|x| x.id}
+      %td= surgery.chemicals.each {|x| x.name}
+      %td= surgery.mechanicals.each {|x| x.name}
+      / %td= surgery.implant_indications
       %td= link_to 'Show', surgery
       %td= link_to 'Edit', edit_surgery_path(surgery)
       %td= link_to 'Destroy', surgery, :method => :delete, :data => { :confirm => 'Are you sure?' }

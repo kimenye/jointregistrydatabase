@@ -49,6 +49,8 @@
           %h6 Implant Details
           %br
           = "Implant Indication"
+          %br
+          %br
           - @indications.each do |indication|
             = check_box_tag "indications[]", indication.name
             = indication.name

@@ -34,32 +34,23 @@ class SurgeriesController < ApplicationController
         format.html { redirect_to @surgery, notice: 'Surgery was successfully created.' }
         format.json { render action: 'show', status: :created, location: @surgery }
 
-        chemicals_used = ChemicalsUsed.new
         chemical = Chemical.find(params["chemical"]["chemical_id"])
-        chemicals_used.surgery_id = @surgery.id
-        chemicals_used.chemical_id = chemical.id
-        chemicals_used.save!
+        ChemicalsUsed.create! surgery_id: @surgery.id, chemical_id: chemical.id
 
-        mechanicals_used = MechanicalsUsed.new
         mechanical = Mechanical.find(params["mechanical"]["mechanical_id"])
-        mechanicals_used.surgery_id = @surgery.id
-        mechanicals_used.mechanical_id = mechanical.id
-        mechanicals_used.save!
+        MechanicalsUsed.create! surgery_id: @surgery.id, mechanical_id: mechanical.id
 
-        anasthetics_used = AnastheticsUsed.new
         anasthetic_type = AnastheticType.find(params["anasthetic_type"]["anasthetic_type_id"])
-        anasthetics_used.surgery_id = @surgery.id
-        anasthetics_used.anasthetic_type_id = anasthetic_type.id
-        anasthetics_used.save!
+        AnastheticsUsed.create! surgery_id: @surgery.id, anasthetic_type_id: anasthetic_type.id
+
+        procedure = PatientProcedure.find(params["patient_procedure"]["patient_procedure_id"])
+        ProceduresUsed.create! surgery_id: @surgery.id, patient_procedure_id: procedure.id
 
         indications = params["indications"]
         if !indications.nil?
           indications.each do |implant_indication|
-            i_surgery = ImplantIndicationSurgery.new
             i_indication = ImplantIndication.find_by_name(implant_indication)
-            i_surgery.surgery_id = @surgery.id
-            i_surgery.implant_indication_id = i_indication.id
-            i_surgery.save!
+            ImplantIndicationSurgery.create! surgery_id: @surgery.id, implant_indication_id: i_indication.id
           end
         end
         
