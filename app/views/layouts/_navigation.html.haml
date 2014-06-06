@@ -1,12 +1,35 @@
--# navigation styled for Zurb Foundation 5
--# the syntax for data-topbar may need to change for Zurb Foundation 5
-%nav.top-bar{"data-topbar" => true}
-  / %ul.title-area
-  /   %li.name
-  /     = link_to 'Home', root_path
-  /   %li.toggle-topbar.menu-icon
-  /     %a{:href => "#"}
-  /       Menu
-  / .top-bar-section
-  %ul.title-area.right
-    = render 'layouts/navigation_links'
+%nav.top-bar{"data-topbar" => ""}
+	%ul.title-area
+		%li.name
+			%a{href: "/"}
+				Home
+	%section.top-bar-section
+		%ul.right
+			- if super_admin_signed_in?
+				%li
+					= link_to 'Users', users_path
+				%li	
+					= link_to 'Patients', patients_path
+				%li	
+					= link_to 'Surgeries', surgeries_path
+			%li.has-dropdown
+				- if super_admin_signed_in? || hospital_admin_signed_in? || surgeon_signed_in?
+					%a{:href => "#"} Logout
+				- else
+					%a{:href => "#"} Login As
+				%ul.dropdown
+					%li
+						- if super_admin_signed_in?
+							= link_to 'Logout', destroy_super_admin_session_path, :method=>'delete'
+						- else
+							= link_to 'Super Admin', super_admin_session_path
+					%li
+						- if hospital_admin_signed_in?
+							= link_to 'Logout', destroy_hospital_admin_session_path, :method=>'delete'
+						- else
+							= link_to 'Hospital Admin', hospital_admin_session_path
+					%li
+						- if surgeon_signed_in?
+							= link_to 'Logout', destroy_surgeon_session_path, :method=>'delete'
+						- else
+							= link_to 'Surgeon', surgeon_session_path

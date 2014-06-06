@@ -10,7 +10,7 @@
     %th Height
     %th Race
     %th Postcode
-    %th Nhif number
+    / %th Nhif number
     %th
     %th
     %th
@@ -25,7 +25,7 @@
       %td= patient.height
       %td= patient.race
       %td= patient.postcode
-      %td= patient.nhif_number
+      / %td= patient.nhif_number
       %td= link_to 'Show', patient
       %td= link_to 'Edit', edit_patient_path(patient)
       %td= link_to 'Destroy', patient, :method => :delete, :data => { :confirm => 'Are you sure?' }

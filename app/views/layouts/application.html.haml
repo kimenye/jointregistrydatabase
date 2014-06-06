@@ -11,11 +11,13 @@
     = csrf_meta_tags
   %body{style: "background-color: white;"}
     %header.row
-      .large-6.column
+      .large-12.column
         %img.left(src = "/assets/logo.png")
-      .large-6.column
-        / = render 'layouts/navigation'
-    .main
+      
+      .row
+        .large-12.column
+          = render 'layouts/navigation'
+    %main{:role => "main"}
       = render 'layouts/messages'
       .row
         = yield

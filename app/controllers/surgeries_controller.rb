@@ -1,6 +1,7 @@
 class SurgeriesController < ApplicationController
   before_action :set_surgery, only: [:show, :edit, :update, :destroy]
-  before_filter :authenticate_hospital_admin!
+  # before_filter :authenticate_hospital_admin!
+  before_filter :authenticate_super_admin!
 
   # GET /surgeries
   # GET /surgeries.json

@@ -4,10 +4,8 @@
   <%= f.error_notification %>
 
   <div class="form-inputs">
-    <%= f.label :name %>
-    <%= f.text_field :name, :autofocus => true, class: 'form-control' %>
-  	<%= f.label "TJR Code" %>
-    <%= f.text_field :name, :autofocus => true, class: 'form-control' %>
+    <%= f.input :name, :autofocus => true, class: 'form-control' %>
+    <%= f.input :tjr_code, class: 'form-control' %>
     <%= f.input :email, required: true, class: 'form-control' %>
     <%= f.input :password, required: true, class: 'form-control' %>
     <%= f.input :password_confirmation, required: true, class: 'form-control' %>
