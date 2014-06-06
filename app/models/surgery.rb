@@ -8,7 +8,7 @@ class Surgery < ActiveRecord::Base
   has_many :chemicals, :through => :chemicals_used
   has_many :mechanicals, :through => :mechanicals_used
   has_many :mechanicals_used
-  has_many :implant_indications, :through => :implant_indication_sugery
+  has_many :implant_indications, :through => :implant_indication_surgery
   has_many :implant_indication_sugery
   has_many :patient_procedures, :through => :procedures_used
   has_many :procedures_used
