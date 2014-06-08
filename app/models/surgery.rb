@@ -1,3 +1,20 @@
+# == Schema Information
+#
+# Table name: surgeries
+#
+#  id                 :integer          not null, primary key
+#  patient_id         :integer
+#  surgeon_id         :integer
+#  date_of_surgery    :date
+#  side               :string(255)
+#  created_at         :datetime
+#  updated_at         :datetime
+#  surgery_type       :string(255)
+#  patient_position   :string(255)
+#  total_hip_approach :string(255)
+#  hospital_id        :integer
+#
+
 class Surgery < ActiveRecord::Base
   belongs_to :patient
   belongs_to :surgeon

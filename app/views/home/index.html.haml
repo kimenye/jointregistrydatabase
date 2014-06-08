@@ -1,31 +1,20 @@
-/ %h3 Home
-/ %nav.top-bar{"data-topbar" => ""}
-/ 	%ul.title-area
-/ 		%li.name
-/ 			%a{href: "#"}
-/ 				Home
-/ 	%section.top-bar-section
-/ 		%ul.right
-/ 			/ %li.active
-/ 			/ 	%a{:href => "#"} Right Button Active
-/ 			%li.has-dropdown
-/ 				- if super_admin_signed_in? || hospital_admin_signed_in? || surgeon_signed_in?
-/ 					%a{:href => "#"} Logout
-/ 				- else
-/ 					%a{:href => "#"} Login As
-/ 				%ul.dropdown
-/ 					%li
-/ 						- if super_admin_signed_in?
-/ 							= link_to 'Logout', destroy_super_admin_session_path, :method=>'delete'
-/ 						- else
-/ 							= link_to 'Super Admin', super_admin_session_path
-/ 					%li
-/ 						- if hospital_admin_signed_in?
-/ 							= link_to 'Logout', destroy_hospital_admin_session_path, :method=>'delete'
-/ 						- else
-/ 							= link_to 'Hospital Admin', hospital_admin_session_path
-/ 					%li
-/ 						- if surgeon_signed_in?
-/ 							= link_to 'Logout', destroy_surgeon_session_path, :method=>'delete'
-/ 						- else
-/ 							= link_to 'Surgeon', surgeon_session_path
+.about
+  .row
+    .large-8.columns.title
+      %h4.subtitle
+        About
+      %p
+        The National Joint Registry is a database of Hip and Knee replacements surgeries performed.
+  .row
+    .large-4.columns
+      %h5.subheader
+        Surgeon Login
+      %hr
+      = simple_form_for(:surgeon, url: surgeon_session_path()) do |f|
+        .field
+          = f.input :email, required: false, autofocus: true
+        .field
+          = f.input :password, required: false
+        .field
+          = f.button :submit, "Sign in", class: "button tiny"              
+          = link_to "Not registered? Sign up here", new_registration_path(:surgeon)

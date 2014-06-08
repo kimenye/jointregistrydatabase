@@ -9,15 +9,11 @@
     = javascript_include_tag "vendor/modernizr"
     = javascript_include_tag "application", "data-turbolinks-track" => true
     = csrf_meta_tags
-  %body{style: "background-color: white;"}
+  %body{class: "#{controller_name} #{action_name}"}  
     %header.row
-      .large-12.column
-        %img.left(src = "/assets/logo.png")
-      
-      .row
-        .large-12.column
-          = render 'layouts/navigation'
-    %main{:role => "main"}
-      = render 'layouts/messages'
-      .row
-        = yield
+      .large-12.columns.title        
+        %h3.subheader
+          %a{href: root_path}
+            = image_tag "logo.jpg", class: "logo"
+          Kenya National Joint Registry
+    = yield

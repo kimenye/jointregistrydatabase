@@ -1,19 +1,26 @@
-<h2>Sign up</h2>
-
-<%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= f.error_notification %>
-
-  <div class="form-inputs">
-    <%= f.input :name, :autofocus => true, class: 'form-control' %>
-    <%= f.input :tjr_code, class: 'form-control' %>
-    <%= f.input :email, required: true, class: 'form-control' %>
-    <%= f.input :password, required: true, class: 'form-control' %>
-    <%= f.input :password_confirmation, required: true, class: 'form-control' %>
+<div class="about">
+  <div class="row">
+    <div class="large-8 columns title">
+      <h4 class="subtitle">Sign up</h4>
+      <p>Welcome to the National Joint Registry. In order to sign up, we need your details below</p>
+    </div>
   </div>
+  <div class="row">
+    <div class="large-5 columns">
+      <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+        <%= f.error_notification %>
 
-  <div class="form-actions">
-    <%= f.button :submit, "Sign up" %>
+        <div class="form-inputs">
+          <%= f.input :name, :autofocus => true, class: 'form-control' %>
+          <%= f.input :registration_code, required: true, class: 'form-control' %>
+          <%= f.input :email, required: true, class: 'form-control' %>
+          <%= f.input :password, required: true, class: 'form-control' %>
+          <%= f.input :password_confirmation, required: true, class: 'form-control' %>
+        </div>
+
+        <div class="form-actions">
+          <%= f.button :submit, "Sign up", class: "button tiny" %>
+        </div>
+      <% end %>      
+    </div>
   </div>
-<% end %>
-
-<%= render "surgeons/shared/links" %>

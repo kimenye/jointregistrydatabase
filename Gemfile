@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-ruby '2.0.0'
+# ruby '2.0.0'
 gem 'rails', '4.0.0'
 gem 'sqlite3'
 gem 'sass-rails', '~> 4.0.0'
@@ -18,6 +18,7 @@ gem 'rolify'
 gem 'simple_form'
 gem 'mysql2'
 gem 'rails_admin'
+gem 'annotate'
 group :development do
   gem 'better_errors'
   gem 'binding_of_caller', :platforms=>[:mri_19, :mri_20, :rbx]

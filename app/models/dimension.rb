@@ -1,3 +1,14 @@
+# == Schema Information
+#
+# Table name: dimensions
+#
+#  id             :integer          not null, primary key
+#  dimension_type :string(255)
+#  implant_id     :integer
+#  created_at     :datetime
+#  updated_at     :datetime
+#
+
 class Dimension < ActiveRecord::Base
   belongs_to :implant
   has_many :implant_sizes
