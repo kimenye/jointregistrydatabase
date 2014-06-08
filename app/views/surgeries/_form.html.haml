@@ -17,7 +17,7 @@
           = collection_select(:surgery, :hospital_id, Hospital.all, :id, :name)
         .large-6.columns
           = "Date of Surgery"
-          = f.input :date_of_surgery, as: :string, :label => false
+          = f.input :date_of_surgery, as: :string, label: false, input_html: { "data-date-format" => "mm/dd/yy", class: "datepicker" }
       %h6 Procedure Details
       .row
         .large-6.columns
