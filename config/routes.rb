@@ -1,4 +1,5 @@
 Jointregistrydatabase::Application.routes.draw do
+  devise_for :users
   resources :surgeries
 
   mount RailsAdmin::Engine => '/admin', :as => 'rails_admin'

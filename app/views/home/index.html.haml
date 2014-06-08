@@ -5,16 +5,31 @@
         About
       %p
         The National Joint Registry is a database of Hip and Knee replacements surgeries performed.
-  .row
-    .large-4.columns
-      %h5.subheader
-        Surgeon Login
-      %hr
-      = simple_form_for(:surgeon, url: surgeon_session_path()) do |f|
-        .field
-          = f.input :email, required: false, autofocus: true
-        .field
-          = f.input :password, required: false
-        .field
-          = f.button :submit, "Sign in", class: "button tiny"              
-          = link_to "Not registered? Sign up here", new_registration_path(:surgeon)
+    - if user_signed_in?
+      .sidebar.large-4.columns
+        %h5.subheader
+          = current_user.name
+        %ul.side-nav
+          %li
+            %a{href: patients_path }
+              Patients
+          %li
+            %a{href: surgeries_path }
+              Surgeries
+          %li
+            %a{href: destroy_user_session_path, method: :delete, "data-method" => "delete", rel: "nofollow"}
+              Log out
+  - if !user_signed_in?
+    .row
+      .large-4.columns
+        %h5.subheader
+          Surgeon Login
+        %hr
+        = simple_form_for(:user, url: user_session_path()) do |f|
+          .field
+            = f.input :email, required: false, autofocus: true
+          .field
+            = f.input :password, required: false
+          .field
+            = f.button :submit, "Sign in", class: "button tiny"              
+            = link_to "Not registered? Sign up here", new_registration_path(:user)

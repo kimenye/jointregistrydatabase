@@ -1,33 +1,35 @@
-%h1 Listing surgeries
+.row
+  .large-12.columns
+    %h5.subheader Listing surgeries
 
-%table
-  %tr
-    %th Patient
-    %th Surgeon
-    %th Date of surgery
-    %th Side
-    %th Anasthetic type
-    %th Chemical
-    %th Mechanical
-    %th Implant indication
-    %th
-    %th
-    %th
+    %table
+      %tr
+        %th Patient
+        %th Surgeon
+        %th Date of surgery
+        %th Side
+        %th Anasthetic type
+        %th Chemical
+        %th Mechanical
+        %th Implant indication
+        %th
+        %th
+        %th
 
-  - @surgeries.each do |surgery|
-    %tr
-      %td= surgery.patient.name
-      %td= surgery.surgeon.name
-      %td= surgery.date_of_surgery
-      %td= surgery.side
-      %td= surgery.anasthetic_types.each {|x| x.id}
-      %td= surgery.chemicals.each {|x| x.name}
-      %td= surgery.mechanicals.each {|x| x.name}
-      / %td= surgery.implant_indications
-      %td= link_to 'Show', surgery
-      %td= link_to 'Edit', edit_surgery_path(surgery)
-      %td= link_to 'Destroy', surgery, :method => :delete, :data => { :confirm => 'Are you sure?' }
+      - @surgeries.each do |surgery|
+        %tr
+          %td= surgery.patient.name
+          %td= surgery.surgeon.name
+          %td= surgery.date_of_surgery
+          %td= surgery.side
+          %td= surgery.anasthetic_types.each {|x| x.id}
+          %td= surgery.chemicals.each {|x| x.name}
+          %td= surgery.mechanicals.each {|x| x.name}
+          / %td= surgery.implant_indications
+          %td= link_to 'Show', surgery
+          %td= link_to 'Edit', edit_surgery_path(surgery)
+          %td= link_to 'Destroy', surgery, :method => :delete, :data => { :confirm => 'Are you sure?' }
 
-%br
+    %br
 
-= link_to 'New Surgery', new_surgery_path
+    = link_to 'New Surgery', new_surgery_path
