@@ -7,20 +7,20 @@
         %th Email
         %th Approved?
     %tbody
-      - @hospital_admins.each do |hospital_admin|
+      - @users.each do |user|
         %tr
-          %td= hospital_admin.email
-          %td= hospital_admin.created_at.to_date
-          - if !hospital_admin.approved
-            %td= link_to "Approve", hospital_admin_approve_path(hospital_admin), method: :post, data: { confirm: 'Are you sure?' }
+          %td= user.email
+          %td= user.created_at.to_date
+          - if !user.approved
+            %td= link_to "Approve", user_approve_path(user), method: :post, data: { confirm: 'Are you sure?' }
           - else
-            %td= link_to "Unapprove", hospital_admin_approve_path(hospital_admin), method: :post, data: { confirm: 'Are you sure?' }
+            %td= link_to "Unapprove", user_approve_path(user), method: :post, data: { confirm: 'Are you sure?' }
 
-      - @surgeons.each do |surgeon|
-        %tr
-          %td= surgeon.name
-          %td= surgeon.email
-          - if !surgeon.approved
-            %td= link_to "Approve", surgeon_approve_path(surgeon), method: :post, data: { confirm: 'Are you sure?' }
-          - else
-            %td= link_to "Unapprove", surgeon_approve_path(surgeon), method: :post, data: { confirm: 'Are you sure?' }
+      / - @surgeons.each do |surgeon|
+      /   %tr
+      /     %td= surgeon.name
+      /     %td= surgeon.email
+      /     - if !surgeon.approved
+      /       %td= link_to "Approve", surgeon_approve_path(surgeon), method: :post, data: { confirm: 'Are you sure?' }
+      /     - else
+      /       %td= link_to "Unapprove", surgeon_approve_path(surgeon), method: :post, data: { confirm: 'Are you sure?' }

@@ -11,6 +11,6 @@ Jointregistrydatabase::Application.routes.draw do
   root :to => "home#index", :controllers => {:registrations => "registrations"}
   resources :users
 
-  match "surgeon/:id/approve_surgeon" => "users#approve_surgeons", :as => "surgeon_approve", via: [:post]
-  match "hospital_admin/:id/approve_hospital_admin" => "users#approve_hospital_admins", :as => "hospital_admin_approve", via: [:post]
+  match "user/:id/approve_user" => "users#approve_users", :as => "user_approve", via: [:post]
+  match "user/:id/" => "users#show", :as => "user_show", via: [:get]
 end

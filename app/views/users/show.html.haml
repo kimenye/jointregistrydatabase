@@ -4,3 +4,9 @@
 %p
   Email: #{@user.email if @user.email}
 = link_to 'Edit account', edit_user_path
+%br
+- if current_user == User.first
+  - if !@user.approved
+    = link_to 'Approve User', user_approve_path(@user), method: :post, data: { confirm: 'Are you sure?' }
+  - else
+    = link_to 'Unapprove User', user_approve_path(@user), method: :post, data: { confirm: 'Are you sure?' }
