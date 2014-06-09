@@ -13,6 +13,7 @@
 #  patient_position   :string(255)
 #  total_hip_approach :string(255)
 #  hospital_id        :integer
+#  user_id            :integer
 #
 
 class Surgery < ActiveRecord::Base

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140608113152) do
+ActiveRecord::Schema.define(version: 20140609065827) do
 
   create_table "anasthetic_types", force: true do |t|
     t.string   "anasthetic_type"
@@ -277,6 +277,7 @@ ActiveRecord::Schema.define(version: 20140608113152) do
     t.string   "registration_code"
     t.string   "name"
     t.string   "user_type"
+    t.string   "phone_number"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
