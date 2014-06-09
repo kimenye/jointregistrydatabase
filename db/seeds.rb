@@ -7,13 +7,15 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 # Environment variables (ENV['...']) can be set in the file config/application.yml.
 # See http://railsapps.github.io/rails-environment-variables.html
-# puts 'ROLES'
-# YAML.load(ENV['ROLES']).each do |role|
-#   Role.find_or_create_by_name(role)
-#   puts 'role: ' << role
-# end
-# puts 'DEFAULT USERS'
-user = User.find_or_create_by_email :email => "admin@jointregistry.com", :password => "superpassword", :password_confirmation => "superpassword"
+
+puts 'ROLES'
+YAML.load(ENV['ROLES']).each do |role|
+  Role.find_or_create_by_name(role)
+  puts 'role: ' << role
+end
+puts 'DEFAULT USERS'
+# user = SuperAdmin.find_or_create_by_email :email => "admin@jointregistry.com", :password => "superpassword", :password_confirmation => "superpassword"
+user = User.find_or_create_by_email email: "admin@jointregistry.com", password: "superpassword", password_confirmation: "superpassword", user_type: "SuperAdmin"
 # puts 'user: ' << user.name
 # user.confirm!
 # user.add_role :admin

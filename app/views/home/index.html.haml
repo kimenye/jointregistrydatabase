@@ -5,10 +5,13 @@
         About
       %p
         The National Joint Registry is a database of Hip and Knee replacements surgeries performed.
+        The goal is to foster a national center for data collection and research on total hip and knee replacement with far-reaching benefits to society including reduced morbidity and mortality, improved patient safety, improved quality of care and medical decision-making, reduced medical spending, and advances in orthopaedic science and bioengineering.
+
+        = link_to "Read More", about_path
     - if user_signed_in?
       .sidebar.large-4.columns
         %h5.subheader
-          = current_user.name
+          Welcome #{current_user.name}
         %ul.side-nav
           %li
             %a{href: patients_path }
@@ -19,8 +22,7 @@
           %li
             %a{href: destroy_user_session_path, method: :delete, "data-method" => "delete", rel: "nofollow"}
               Log out
-  - if !user_signed_in?
-    .row
+    - else
       .large-4.columns
         %h5.subheader
           Surgeon Login
@@ -33,3 +35,15 @@
           .field
             = f.button :submit, "Sign in", class: "button tiny"              
             = link_to "Not registered? Sign up here", new_registration_path(:user)
+.hospitals
+  .row
+    .large-12.columns
+      %h4.subtitle
+        Participating Hospitals
+  .row
+    .large-12.columns
+      %ul.large-block-grid-2
+        %li
+          = image_tag "cure-kenya.png", class: "th"
+        %li
+          = image_tag "moi-teaching.jpg", class: "th"

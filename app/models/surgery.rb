@@ -13,6 +13,7 @@
 #  patient_position   :string(255)
 #  total_hip_approach :string(255)
 #  hospital_id        :integer
+#  user_id            :integer
 #
 
 class Surgery < ActiveRecord::Base
@@ -25,8 +26,8 @@ class Surgery < ActiveRecord::Base
   has_many :chemicals, :through => :chemicals_used
   has_many :mechanicals, :through => :mechanicals_used
   has_many :mechanicals_used
-  has_many :implant_indications, :through => :implant_indication_surgery
-  has_many :implant_indication_sugery
+  # has_many :implant_indications, :through => :implant_indication_surgery
+  # has_many :implant_indication_sugery
   has_many :patient_procedures, :through => :procedures_used
   has_many :procedures_used
 end

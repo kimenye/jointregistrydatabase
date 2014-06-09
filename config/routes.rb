@@ -13,4 +13,6 @@ Jointregistrydatabase::Application.routes.draw do
 
   match "user/:id/approve_user" => "users#approve_users", :as => "user_approve", via: [:post]
   match "user/:id/" => "users#show", :as => "user_show", via: [:get]
+
+  get "/about" => "home#about"
 end

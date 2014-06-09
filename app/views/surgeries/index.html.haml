@@ -27,9 +27,13 @@
           %td= surgery.mechanicals.each {|x| x.name}
           / %td= surgery.implant_indications
           %td= link_to 'Show', surgery
-          %td= link_to 'Edit', edit_surgery_path(surgery)
-          %td= link_to 'Destroy', surgery, :method => :delete, :data => { :confirm => 'Are you sure?' }
+          %td
+            - if can? :add, Surgery
+              = link_to 'Edit', edit_surgery_path(surgery)
+          %td
+            - if can? :delete, Surgery
+              = link_to 'Destroy', surgery, :method => :delete, :data => { :confirm => 'Are you sure?' }
 
     %br
-
-    = link_to 'New Surgery', new_surgery_path
+    - if can? :add, Surgery
+      = link_to 'New Surgery', new_surgery_path, class: "button tiny"

@@ -278,6 +278,7 @@ ActiveRecord::Schema.define(version: 20140609082415) do
     t.string   "name"
     t.string   "user_type"
     t.boolean  "approved"
+    t.string   "phone_number"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true

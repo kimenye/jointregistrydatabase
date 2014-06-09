@@ -16,4 +16,11 @@
           %a{href: root_path}
             = image_tag "logo.jpg", class: "logo"
           Kenya National Joint Registry
-    = yield
+    .main
+      = yield
+
+    %footer.row
+      .large-10.columns
+        Copyright &copy; #{Time.now.year} Kenya National Joint Registry. 
+        %a{href: "http://www.jointregistry.co.ke"} http://www.jointregistry.co.ke
+
