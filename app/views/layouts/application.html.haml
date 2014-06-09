@@ -16,8 +16,8 @@
           %a{href: root_path}
             = image_tag "logo.jpg", class: "logo"
           Kenya National Joint Registry
-    .main
-      = render "messages"
+    .main.row
+      = render "layouts/messages"
       = yield
 
     %footer.row

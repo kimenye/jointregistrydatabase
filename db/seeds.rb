@@ -15,7 +15,7 @@ YAML.load(ENV['ROLES']).each do |role|
 end
 puts 'DEFAULT USERS'
 # user = SuperAdmin.find_or_create_by_email :email => "admin@jointregistry.com", :password => "superpassword", :password_confirmation => "superpassword"
-user = User.find_or_create_by_email email: "admin@jointregistry.com", password: "superpassword", password_confirmation: "superpassword", user_type: "SuperAdmin"
+user = User.find_or_create_by_email email: "admin@jointregistry.com", password: "superpassword", password_confirmation: "superpassword", user_type: "SuperAdmin", approved: true
 # puts 'user: ' << user.name
 # user.confirm!
 # user.add_role :admin

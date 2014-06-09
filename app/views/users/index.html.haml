@@ -3,14 +3,18 @@
   %table.table.table-condensed
     %thead
       %tr
-        %th Username
+        %th Name
+        %th Phone Number
         %th Email
+        %th Type
         %th Approved?
     %tbody
       - @users.each do |user|
         %tr
+          %td= link_to user.name, user_show_path(user)
+          %td= user.phone_number
           %td= user.email
-          %td= user.created_at.to_date
+          %td= user.user_type
           - if !user.approved
             %td= link_to "Approve", user_approve_path(user), method: :post, data: { confirm: 'Are you sure?' }
           - else

@@ -6,7 +6,7 @@
 <body>
 	<p>Dear Super Admin,</p>
 	<p>
-		<%= @user.name %> has signed up on the site and is awaiting approval. The user's details are: <br> Email: <%= @user.email %> <br> Registration Code: <%= @user.registration_code %> <br> User Type: <%= @user.user_type %> <br> Click <%= link_to "here", "http://localhost:3000#{user_show_path(@user)}", method: :post, data: { confirm: 'Are you sure?' } %> to view their profile and approve them.
+		<%= @user.name %> has signed up on the site and is awaiting approval. The user's details are: <br> Email: <%= @user.email %> <br> Registration Code: <%= @user.registration_code %> <br> Phone Number: <%= @user.phone_number %> <br> User Type: <%= @user.user_type %> <br> Click <%= link_to "here", "http://localhost:3000#{user_show_path(@user)}", method: :post, data: { confirm: 'Are you sure?' } %> to view their profile and approve them.
 	</p>
 </body>
 </html>
