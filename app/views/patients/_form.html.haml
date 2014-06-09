@@ -4,8 +4,8 @@
   .form-inputs
     = f.input :medical_record_number
     = f.input :name
-    = f.input :date_of_birth, as: :string
-    = f.input :gender
+    = f.input :date_of_birth, as: :string, input_html: { "data-date-format" => "mm/dd/yy", class: "datepicker" }
+    = f.input :gender, collection: ["Male", "Female"]
     = f.input :weight
     = f.input :height
     / = f.input :race
