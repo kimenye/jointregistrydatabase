@@ -51,9 +51,11 @@
           = "Implant Indication"
           %br
           %br
-          - @indications.each do |indication|
-            = check_box_tag "indications[]", indication.name
-            = indication.name
+          %ul.large-block-grid-4.multicheckboxes            
+            - @indications.each do |indication|
+              %li
+                = check_box_tag "indications[]", indication.name
+                = indication.name
       %br
       .row
         .large-3.columns
