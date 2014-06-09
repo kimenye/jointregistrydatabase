@@ -15,4 +15,5 @@ Jointregistrydatabase::Application.routes.draw do
   match "user/:id/" => "users#show", :as => "user_show", via: [:get]
 
   get "/about" => "home#about"
+  get "/get_sizes" => "surgeries#get_sizes"
 end

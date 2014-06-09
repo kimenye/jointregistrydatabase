@@ -28,6 +28,17 @@ class SurgeriesController < ApplicationController
   def edit
   end
 
+  # GET /surgeries/get_sizes?implant_id=?
+  def get_sizes
+    @implant = Implant.find(params[:implant_id])
+
+    respond_to do |format|
+      # format.json { render json: { implants: @implant.dimensions }}
+      # format.json { partial! "get_sizes" }
+      format.json { render partial: 'surgeries/get_sizes' } 
+    end
+  end
+
   # POST /surgeries
   # POST /surgeries.json
   def create
