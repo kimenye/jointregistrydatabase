@@ -10,7 +10,7 @@
           = collection_select(:surgery, :patient_id, Patient.all, :id, :name)
         .large-6.columns
           = "Surgeon"
-          = collection_select(:surgery, :surgeon_id, Surgeon.all, :id, :name)
+          %input.disabled{type: "text", disabled: "disabled", value: current_user.name }
       .row
         .large-6.columns
           = "Hospital"

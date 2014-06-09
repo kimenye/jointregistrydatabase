@@ -25,6 +25,21 @@ header {
 	}
 }
 
+footer {
+	border-top: 1px solid rgb(220, 220, 220);
+	padding: 1rem;
+	font-size: .8rem;
+	
+}
+
+.main {
+	padding: 2rem 1rem;
+}
+
+footer.row {
+	margin-top: 30px;
+}
+
 .sidebar {
 	background-color: #eee;
 	padding: 2rem;

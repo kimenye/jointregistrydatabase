@@ -11,7 +11,7 @@
     - if user_signed_in?
       .sidebar.large-4.columns
         %h5.subheader
-          = current_user.name
+          Welcome #{current_user.name}
         %ul.side-nav
           %li
             %a{href: patients_path }

@@ -6,7 +6,11 @@ class SurgeriesController < ApplicationController
   # GET /surgeries
   # GET /surgeries.json
   def index
-    @surgeries = Surgery.all
+    if can? :see_all, Surgery 
+      @surgeries = Surgery.all
+    else
+      @surgeries = Surgery.where(user_id: current_user)
+    end
   end
 
   # GET /surgeries/1
