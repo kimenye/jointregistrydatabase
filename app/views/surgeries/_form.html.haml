@@ -51,9 +51,11 @@
           = "Implant Indication"
           %br
           %br
-          - @indications.each do |indication|
-            = check_box_tag "indications[]", indication.name
-            = indication.name
+          %ul.large-block-grid-3.multicheckboxes            
+            - @indications.each do |indication|
+              %li
+                = check_box_tag "indications[]", indication.name
+                = indication.name
       %br
       .row
         .large-3.columns
@@ -61,12 +63,29 @@
           = collection_select(:manufacturer, :manufacturer_id, Manufacturer.all, :id, :name)
         .large-3.columns
           = "Implant"
-          = collection_select(:implant, :implant_id, Implant.all, :id, :name)
-        .large-3.columns
-          = "Dimensions"
-          = collection_select(:dimension, :dimension_id, Dimension.all, :id, :dimension_type)
-        .large-3.columns
-          = "Size"
-          = collection_select(:implant_size, :implant_size_id, ImplantSize.all, :id, :measurement)
+          = collection_select(:implant, :implant_id, Implant.all, :id, :name, {}, { class: "implant_select" })
+        .large-2.columns
+          %br
+          %a.button.tiny.get_sizes
+            Get Sizes
+        .large-4.columns
+          = "Sizes"
+          %table.sizes
+            %thead
+              %th
+                Dimension
+              %th
+                Size
+            %tbody
+
+        / .large-3.columns
+        /   = "Dimensions"
+        /   = collection_select(:dimension, :dimension_id, Dimension.all, :id, :dimension_type)
+        / .large-3.columns
+        /   = "Size"
+        /   = collection_select(:implant_size, :implant_size_id, ImplantSize.all, :id, :measurement)
+          
+
+
     .form-actions
       = f.button :submit, class: "button"
