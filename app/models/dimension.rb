@@ -18,8 +18,8 @@ class Dimension < ActiveRecord::Base
   #end
 
   def name
-   if !implant.nil?
-     return	"#{implant.name} - #{dimension_type}"
-   end
+  	if !implant.nil?
+  		return	"#{implant.name} - #{dimension_type}"
+  	end
   end
 end
