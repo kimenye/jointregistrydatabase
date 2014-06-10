@@ -62,7 +62,7 @@ a:hover {
 	padding: 2rem;
 }
 
-h4.subtitle {
+h4.subtitle, h5.subtitle {
 	color: #00aa00;
 }
 
@@ -97,4 +97,9 @@ h4.subtitle {
 .button {
 	background-color: #43ac6a;
 	border-color: #3a945b;
+}
+
+.signup {
+	padding: 1rem;
+	border: 1px solid #eee;
 }
