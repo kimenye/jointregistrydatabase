@@ -16,5 +16,6 @@ Jointregistrydatabase::Application.routes.draw do
 
   get "/about" => "home#about"
   get "/patient_information_hip" => "home#patient_information_hip"
+  get "/patient_information_knee" => "home#patient_information_knee"
   get "/get_sizes" => "surgeries#get_sizes"
 end

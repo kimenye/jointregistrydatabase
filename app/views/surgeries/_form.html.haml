@@ -24,7 +24,16 @@
         .row
           .large-6.columns
             = "Patient Procedure"
-            = collection_select(:patient_procedure, :patient_procedure_id, PatientProcedure.all, :id, :name)
+            / = f.select :patient_procedure, :patient_procedure_id, options_for_select_with_attributes(PatientProcedure.all, :id, :name, { :class => :procedure_type }, PatientProcedure.find(1).procedure_type)
+            / = f.select :patient_procedure, :patient_procedure_id, options_for_select_with_attributes(PatientProcedure.all.map {|procedure| [procedure.name, procedure.id, {:'procedure_type' => procedure.procedure_type}]})
+            /= f.select :patient_procedure, :patient_procedure_id, PatientProcedure.all.map {|procedure| [procedure.name, procedure.id, {:'procedure_type' => procedure.procedure_type}]}
+            / = collection_select(:patient_procedure, :patient_procedure_id, PatientProcedure.all, :id, :name, {}, { class: "complications" })
+            %select#patient_procedure_patient_procedure_id{name: "patient_procedure[patient_procedure_id]"}
+              %option{value: ""}
+                Please select One
+              - PatientProcedure.all.each do |procedure|
+                %option{value: procedure.id, "data-procedure-type" => procedure.procedure_type} 
+                  = procedure.name
           .large-3.end.columns
             = "Side"
             = f.input :side, collection: ["Right", "Left"], :include_blank => false, :label => false
@@ -91,7 +100,20 @@
         /   = "Size"
         /   = collection_select(:implant_size, :implant_size_id, ImplantSize.all, :id, :measurement)
           
-
+      .row
+        .large-12.columns
+          %fieldset
+            %legend Inter-operative Complications
+            %ul.large-block-grid-3.multicheckboxes#Knee.to-be-hidden
+              - @knee_complications.each do |complication|
+                %li
+                  = check_box_tag "complications[]", complication.name
+                  = complication.name
+            %ul.large-block-grid-3.multicheckboxes#Hip.to-be-hidden
+              - @hip_complications.each do |complication|
+                %li
+                  = check_box_tag "complications[]", complication.name
+                  = complication.name
 
     .form-actions
       = f.button :submit, class: "button tiny"

@@ -22,6 +22,8 @@ class SurgeriesController < ApplicationController
   def new
     @surgery = Surgery.new
     @indications = ImplantIndication.all
+    @knee_complications = InterOperativeComplication.where(complication_type: "Knee")
+    @hip_complications = InterOperativeComplication.where(complication_type: "Hip")
   end
 
   # GET /surgeries/1/edit
@@ -81,6 +83,10 @@ class SurgeriesController < ApplicationController
           implants_used.dimension_id = dimension.id
           implants_used.implant_size_id = ImplantSize.where(measurement: params["dimension"]["#{implant.dimensions.index(dimension)}"], dimension_id: dimension.id).first.id
           implants_used.save!
+        end
+        params["complications"].each do |complication|
+          inter_operative_complication = InterOperativeComplication.find_by_name(complication)
+          SurgeryComplication.create! surgery_id: @surgery.id, inter_operative_complication_id: inter_operative_complication.id
         end
       else
         format.html { render action: 'new' }

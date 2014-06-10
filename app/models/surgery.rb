@@ -32,4 +32,6 @@ class Surgery < ActiveRecord::Base
   has_many :implants_used
   has_many :patient_procedures, :through => :procedures_used
   has_many :procedures_used
+  has_many :inter_operative_complications, :through => :surgery_complications
+  has_many :surgery_complications
 end

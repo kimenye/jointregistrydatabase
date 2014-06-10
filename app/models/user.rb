@@ -21,6 +21,8 @@
 #  phone_number           :string(255)
 #  approved               :boolean
 #  hospital_id            :integer
+#  njr_code               :string(255)
+#  title                  :string(255)
 #
 
 class User < ActiveRecord::Base
