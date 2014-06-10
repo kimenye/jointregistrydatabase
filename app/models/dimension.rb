@@ -13,7 +13,13 @@ class Dimension < ActiveRecord::Base
   belongs_to :implant
   has_many :implant_sizes
 
+  #def name
+  #	"#{implant.name} - #{dimension_type}"
+  #end
+
   def name
-  	"#{implant.name} - #{dimension_type}"
+   if !implant.nil?
+     return	"#{implant.name} - #{dimension_type}"
+   end
   end
 end
