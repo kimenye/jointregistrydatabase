@@ -4,8 +4,7 @@
       %h4.subtitle
         About
       %p
-        The National Joint Registry is a database of Hip and Knee replacements surgeries performed.
-        The goal is to foster a national center for data collection and research on total hip and knee replacement with far-reaching benefits to society including reduced morbidity and mortality, improved patient safety, improved quality of care and medical decision-making, reduced medical spending, and advances in orthopaedic science and bioengineering.
+        The Kenya National Joint registry is a registry of Total Hip and Total Knee Replacements done within the country. This registry is being launched at the Kenya Orthopaedic Associatiion Scientific Conference in June 2014.
 
         = link_to "Read More", about_path
     - if user_signed_in?
@@ -42,8 +41,12 @@
         Participating Hospitals
   .row
     .large-12.columns
-      %ul.large-block-grid-2
+      %ul.large-block-grid-4
+        %li.small
+          = image_tag "cure-kenya.png", class: ""
         %li
-          = image_tag "cure-kenya.png", class: "th"
+          = image_tag "moi-teaching.png", class: ""
         %li
-          = image_tag "moi-teaching.jpg", class: "th"
+          = image_tag "tenwek.png", class: ""
+        %li.small
+          = image_tag "kijabe_hospital.png", class: ""

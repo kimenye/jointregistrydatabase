@@ -10,12 +10,14 @@
     = javascript_include_tag "application", "data-turbolinks-track" => true
     = csrf_meta_tags
   %body{class: "#{controller_name} #{action_name}"}  
-    %header.row
-      .large-12.columns.title        
-        %h3.subheader
+    %header.row.banner
+      .large-12.columns
+        %h3.subheader.title
           %a{href: root_path}
             = image_tag "logo.jpg", class: "logo"
-          Kenya National Joint Registry
+    .row.nav
+      .large-12.columns
+        
     .main
       = render "layouts/messages"
       = yield
