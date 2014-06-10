@@ -1,33 +1,59 @@
 <div class="row">
+	<div class="large-7 columns">
+		<h4 class="subtitle">Surgeons Sign up</h4>
+
+		<p>Welcome to the Kenya National Joint Registry. This total hip and knee replacements registry has been developed by surgeons in collaboration with implant suppliers.</p>		
+
+		<p>By registering to join the registry, you become a history maker in arthroplasty surgery and research in Kenya. The registry offers you the following advantages:
+
+		 
+		<ol>
+			<li>An online log of your total hip and knee replacements</li>
+			<li>Periodic automatic reports</li>
+			<li>Annual joint registry reports</li>
+			<li>Reports of implants with problems and implants recalls</li>
+		</ol>
+		</p>
+
+		<p><em><b>Registration is FREE for all surgeons. You can <%= link_to "download", asset_path("Data_entry_form.pdf") %> a data entry from for offline recording of data and a later upload.</b></em>
+	</div>
 	<div class="large-5 columns">
-		<h4 class="subheader">Sign up</h4>
+		<div class="signup">
 
-		<p>Welcome to the National Joint Registry Database. In order to join, you need to provide us the with the below details. Once your registration is received, an administrator will approve it before you can start using the NJR.</p>
+			<%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+			  <%= f.error_notification %>
 
-		<%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-		  <%= f.error_notification %>
+			  <div class="form-inputs">
+			  	<div class="row">
+			  		<div class="large-3 columns">
+			  			<%= f.input :title, collection: ["Dr", "Prof.", "Mr"], :include_blank => false %>
+			  		</div>
+			  		<div class="large-9 columns">
+				  		<%= f.label :name, "Your Name" %>
+				    	<%= f.input :name, required: true, autofocus: true, placeholder: "Gregory House", label: false %>
+				    </div>
+				</div>
 
-		  <div class="form-inputs">
-		    <%= f.input :name, required: true, autofocus: true %>
-		    <% if params[:type] != "HospitalAdmin" %>
-				<%= f.input :registration_code, required: true, autofocus: true %>
-			<% else %>
-				<%= f.label :hospital %>				
-				<%= f.collection_select(:hospital, Hospital.all, :id, :name) %>
+			    <% if params[:type] == "HospitalAdmin" %>				
+					<%= f.label :hospital %>				
+					<%= f.collection_select(:hospital, Hospital.all, :id, :name) %>
+				<% end %>
+				<%= f.input :phone_number, required: true, autofocus: true, placeholder: "254722200200" %>
+			    <%= f.input :email, required: true, autofocus: true, placeholder: "name@domain.com" %>
+			    
+			    <%= f.label :password, "Password (must be at least 8 characters)" %>
+			    <%= f.input :password, required: true, label: false %>		    
+			    <%= f.input :password_confirmation, required: true %>
+			    <%= f.hidden_field :user_type, value: "Surgeon" %>
+			  </div>
+
+			  <div class="form-actions">
+			    <%= f.button :submit, "Sign up", class: "button tiny" %>
+			  </div>		
 			<% end %>
-			<%= f.input :phone_number, required: true, autofocus: true %>
-		    <%= f.input :email, required: true, autofocus: true %>
-		    <%= f.input :password, required: true %>		    
-		    <%= f.input :password_confirmation, required: true %>
-		    <%= f.hidden_field :user_type, value: params[:type] %>
-		  </div>
-
-		  <div class="form-actions">
-		    <%= f.button :submit, "Sign up", class: "button tiny" %>
-		  </div>
-		<% end %>
+		</div>
 	</div>
-	<div class="large-7 columns hero">
+<!-- 	<div class="large-7 columns hero">
 		<%= image_tag "surgeons.jpg" %>
-	</div>
+	</div> -->
 </div>

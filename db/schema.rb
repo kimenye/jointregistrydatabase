@@ -298,6 +298,7 @@ ActiveRecord::Schema.define(version: 20140610153935) do
     t.string   "phone_number"
     t.integer  "hospital_id"
     t.string   "njr_code"
+    t.string   "title"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true

@@ -4,10 +4,11 @@
     %meta{:name => "viewport", :content => "width=device-width, initial-scale=1.0"}
     %title= content_for?(:title) ? yield(:title) : 'Joint Registry Database'
     %meta{:name => "description", :content => "#{content_for?(:description) ? yield(:description) : 'Jointregistrydatabase'}"}
-    = stylesheet_link_tag "application", media: "all", "data-turbolinks-track" => false
+    = stylesheet_link_tag "application", media: "all"
     -# Modernizr is required for Zurb Foundation
+    = favicon_link_tag 'favicon.ico'
     = javascript_include_tag "vendor/modernizr"
-    = javascript_include_tag "application", "data-turbolinks-track" => false
+    = javascript_include_tag "application"
     = csrf_meta_tags
   %body{class: "#{controller_name} #{action_name}"}  
     %header.row.banner
@@ -27,14 +28,18 @@
               / %li.has-dropdown
               /   %a{:href => "#"} Sign Up
               /   %ul.dropdown
+              -if !user_signed_in?
+                %li
+                  =link_to "Surgeons", new_registration_path(:user)
               %li
-                =link_to "Surgeons", "#{new_registration_path(:user)}?type=Surgeon"
+                =link_to "Hospitals"
               %li
-                =link_to "Hospital Admins", "#{new_registration_path(:user)}?type=HospitalAdmin"
-              %li
-                =link_to "Implant Supplier"
-              %li
-                = link_to "Patient Information"
+                =link_to "Implant Suppliers"
+              %li.has-dropdown
+                %a{href: "$"} Patient Information
+                %ul.dropdown
+                  %li
+                    = link_to "Hip Replacements", patient_information_hip_path
               %li
                 = link_to "Implant Information"
               %li
