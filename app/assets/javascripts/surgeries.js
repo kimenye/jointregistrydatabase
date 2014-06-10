@@ -20,7 +20,7 @@ $(function() {
 			console.log(data)
 			// debugger;
 	        $.each(data.dimensions, function(idx, dimension) {
-	        	$('table.sizes tbody').append('<tr><td>' + dimension.dimension_type + '</</td><td><select>' + getOptions(dimension) + '</select></td></tr>')
+	        	$('table.sizes tbody').append('<tr><td>' + dimension.dimension_type + '</</td><td><select name=dimension['+ data.dimensions.indexOf(dimension) +']>' + getOptions(dimension) + '</select></td></tr>')
 	        });
 		});
 	})

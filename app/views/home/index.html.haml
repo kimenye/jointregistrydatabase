@@ -2,7 +2,7 @@
   .row
     .large-8.columns.title
       %h4.subtitle
-        About
+        Welcome
       %p
         The Kenya National Joint registry is a registry of Total Hip and Total Knee Replacements done within the country. This registry is being launched at the Kenya Orthopaedic Associatiion Scientific Conference in June 2014.
 
@@ -33,7 +33,7 @@
             = f.input :password, required: false
           .field
             = f.button :submit, "Sign in", class: "button tiny"              
-            = link_to "Not registered? Sign up here", new_registration_path(:user)
+            = link_to "Not registered? Sign up here", "#{new_registration_path(:user)}?user_type=Surgeon"
 .hospitals
   .row
     .large-12.columns

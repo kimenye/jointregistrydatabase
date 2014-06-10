@@ -1,30 +1,77 @@
-%p#notice= notice
+.row
+	.large-12.column
+		%p#notice= notice
 
-%p
-  %b Patient:
-  = @surgery.patient_id
-%p
-  %b Surgeon:
-  = @surgery.surgeon_id
-%p
-  %b Date of surgery:
-  = @surgery.date_of_surgery
-%p
-  %b Side:
-  = @surgery.side
-/ %p
-/   %b Anasthetic type:
-/   = @surgery.anasthetic_type_id
-/ %p
-/   %b Chemical:
-/   = @surgery.chemical_id
-/ %p
-/   %b Mechanical:
-/   = @surgery.mechanical_id
-/ %p
-/   %b Implant indication:
-/   = @surgery.implant_indication_id
+		%p
+			%b Patient:
+			= @surgery.patient.name
+		%p
+			%b Surgeon:
+			= @surgery.user.name
+		%p
+			%b Hospital:
+			= @surgery.hospital.name
+		%p
+			%b Date of surgery:
+			= @surgery.date_of_surgery
+		%p
+			%b Side:
+			= @surgery.side
+		%p
+			%b Patient position:
+			= @surgery.patient_position
+		%p
+			%b Total hip approach:
+			= @surgery.total_hip_approach
+		%p
+			%b Procedure Used:
+			= @surgery.patient_procedures.first.name
+		%p
+			%b Anasthetic type:
+			- @surgery.anasthetic_types.each do |x|
+				= "#{x.anasthetic_type}"
+		%p
+			%b Chemical:
+			- @surgery.chemicals.each do |x|
+				= "#{x.name}"
+		%p
+			%b Mechanical:
+			- @surgery.mechanicals.each do |x|
+				= "#{x.name}"
+		%p
+			%b Implant indications:
+			%ul
+			- @surgery.implant_indications.each do |x|
+				%li
+					= "#{x.name},"
+		%p
+			%b Implant used:
+			%table
+				%thead
+					%th
+						Implant
+					%th
+						Manufacturer
+					%th
+						Dimensions
+					%th
+						Sizes
+				%tbody
+					%tr
+						%td
+							= @surgery.implants.first.name
+						%td
+							= @surgery.implants.first.manufacturer.name
+						%td
+							- @surgery.implants.first.dimensions.each do |d|
+								= d.dimension_type
+								%br
+						%td
+							/ = @surgery.implants_used.last.implant_size.measurement
+							- @surgery.implants_used.each do |implants|
+								= implants.implant_size.measurement
+								%br
 
-= link_to 'Edit', edit_surgery_path(@surgery)
-\|
-= link_to 'Back', surgeries_path
+		= link_to 'Edit', edit_surgery_path(@surgery)
+		\|
+		= link_to 'Back', surgeries_path

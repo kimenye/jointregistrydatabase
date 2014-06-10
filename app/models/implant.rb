@@ -12,5 +12,6 @@
 
 class Implant < ActiveRecord::Base
   belongs_to :manufacturer
+  belongs_to :surgery
   has_many :dimensions
 end
