@@ -21,7 +21,7 @@ header {
 	}
 
 	.title {
-		border-bottom: 1px solid rgb(220, 220, 220);
+		border-bottom: 1px solid #eee;
 	}
 }
 
@@ -62,9 +62,14 @@ h4.subtitle {
 }
 
 .hospitals {
-	img.th {
+	img {
+		max-width: 150px;
 		display: block;
 		margin: auto;
+	}
+
+	.small {
+		padding: 3rem 0px;
 	}
 }
 
