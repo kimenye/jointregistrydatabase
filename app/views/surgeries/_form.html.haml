@@ -9,16 +9,16 @@
         .row
           .large-4.columns
             = "Patient"
-            = collection_select(:surgery, :patient_id, Patient.all, :id, :name)
+            = collection_select(:surgery, :patient_id, Patient.all, :id, :name, include_blank: true)
           / .large-3.columns
           /   = "Surgeon"
           /   %input.disabled{type: "text", disabled: "disabled", value: current_user.name }
           .large-4.end.columns
             = "Hospital"
-            = collection_select(:surgery, :hospital_id, Hospital.all, :id, :name)
+            = collection_select(:surgery, :hospital_id, Hospital.all, :id, :name, include_blank: true)
           .large-4.columns
             = "Date of Surgery"
-            = f.input :date_of_surgery, as: :string, label: false, input_html: { "data-date-format" => "mm/dd/yy", class: "datepicker" }
+            = f.input :date_of_surgery, as: :string, label: false, input_html: { placeholder: "dd/mm/yy", "data-date-format" => "mm/dd/yy", class: "datepicker" }
       %fieldset
         %legend Procedure Details
         .row
@@ -36,17 +36,18 @@
                   = procedure.name
           .large-3.end.columns
             = "Side"
-            = f.input :side, collection: ["Right", "Left"], :include_blank => false, :label => false
+            = f.input :side, collection: ["Right", "Left"], :include_blank => true, :label => false
           .large-3.columns
-            = "Total Hip Approach"
-            = f.input :total_hip_approach, collection: ["Lateral", "Posterior", "Anterior"], :include_blank => false, :label => false        
+            .approach.hide
+              = "Total Hip Approach"
+              = f.input :total_hip_approach, collection: ["Lateral", "Posterior", "Anterior"], :include_blank => true, :label => false        
         .row          
           .large-4.columns
             = "Patient Position"
-            = f.input :patient_position, collection: ["Lateral", "Supine"], :include_blank => false, :label => false      
+            = f.input :patient_position, collection: ["Lateral", "Supine"], :include_blank => true, :label => false      
           .large-4.end.columns    
             = "Anasthetic Type"
-            = collection_select(:anasthetic_type, :anasthetic_type_id, AnastheticType.all, :id, :anasthetic_type)
+            = collection_select(:anasthetic_type, :anasthetic_type_id, AnastheticType.all, :id, :anasthetic_type, include_blank: true)
           
       .row
         .large-12.columns
@@ -61,12 +62,12 @@
       %fieldset
         %legend Implant
         .row          
-          .large-3.columns
-            = "Manufacturer"
-            = collection_select(:manufacturer, :manufacturer_id, Manufacturer.all, :id, :name)
+          / .large-3.columns
+          /   = "Manufacturer"
+          /   = collection_select(:manufacturer, :manufacturer_id, Manufacturer.all, :id, :name, include_blank: true)
           .large-3.columns
             = "Implant"
-            = collection_select(:implant, :implant_id, Implant.all, :id, :name, {}, { class: "implant_select" })
+            = collection_select(:implant, :implant_id, Implant.all, :id, :name, include_blank: true, class: "implant_select")
           .large-2.end.columns
             %br
             %a.button.tiny.get_sizes
@@ -87,10 +88,10 @@
         .row          
           .large-4.columns
             = "Chemical"
-            = collection_select(:chemical, :chemical_id, Chemical.all, :id, :name)
+            = collection_select(:chemical, :chemical_id, Chemical.all, :id, :name, include_blank: true)
           .large-4.end.columns
             = "Mechanical"
-            = collection_select(:mechanical, :mechanical_id, Mechanical.all, :id, :name)
+            = collection_select(:mechanical, :mechanical_id, Mechanical.all, :id, :name, include_blank: true)
             
 
         / .large-3.columns

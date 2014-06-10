@@ -15,18 +15,24 @@ $(function() {
 	}
 
 	$('.get_sizes').click(function() {
-
-		$.getJSON('/get_sizes?implant_id=1', function(data) {
-			console.log(data)
-			// debugger;
+		var implant_id = $('#implant_implant_id').val();
+		$.getJSON("/get_sizes?implant_id=" + implant_id, function(data) {
+			$('table.sizes tbody').html("");
 	        $.each(data.dimensions, function(idx, dimension) {
+	        	
 	        	$('table.sizes tbody').append('<tr><td>' + dimension.dimension_type + '</</td><td><select name=dimension['+ data.dimensions.indexOf(dimension) +']>' + getOptions(dimension) + '</select></td></tr>')
 	        });
 		});
 	})
 
 	$('#patient_procedure_patient_procedure_id').change(function(){
-		var procedureType = $(this).find('option:selected').data("procedure-type")
+		var procedureType = $(this).find('option:selected').data("procedure-type");
+		if (procedureType == "Hip") {
+			$('.approach.hide').removeClass('hide');
+		} else {
+			$('.approach').addClass('hide');
+		}
+
         $('.to-be-hidden').hide();
         $('#' + procedureType).show();
     });
