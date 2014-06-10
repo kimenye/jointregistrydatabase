@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140610153935) do
+ActiveRecord::Schema.define(version: 20140610180245) do
 
   create_table "anasthetic_types", force: true do |t|
     t.string   "anasthetic_type"
@@ -101,7 +101,7 @@ ActiveRecord::Schema.define(version: 20140610153935) do
 
   create_table "implant_sizes", force: true do |t|
     t.integer  "dimension_id"
-    t.float    "measurement"
+    t.string   "measurement"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -294,8 +294,8 @@ ActiveRecord::Schema.define(version: 20140610153935) do
     t.string   "registration_code"
     t.string   "name"
     t.string   "user_type"
-    t.boolean  "approved"
     t.string   "phone_number"
+    t.boolean  "approved"
     t.integer  "hospital_id"
     t.string   "njr_code"
     t.string   "title"
