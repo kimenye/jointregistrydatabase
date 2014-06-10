@@ -8,18 +8,27 @@
 		  <%= f.error_notification %>
 
 		  <div class="form-inputs">
-		    <%= f.input :name, required: true, autofocus: true %>
-		    <% if params[:type] != "HospitalAdmin" %>
-				<%= f.input :registration_code, required: true, autofocus: true %>
-			<% else %>
+		  	<div class="row">
+		  		<div class="large-3 columns">
+		  			<%= f.input :title, collection: ["Dr", "Prof.", "Mr"], :include_blank => false %>
+		  		</div>
+		  		<div class="large-9 columns">
+			  		<%= f.label :name, "Your Name" %>
+			    	<%= f.input :name, required: true, autofocus: true, placeholder: "Gregory House", label: false %>
+			    </div>
+			</div>
+
+		    <% if params[:type] == "HospitalAdmin" %>				
 				<%= f.label :hospital %>				
 				<%= f.collection_select(:hospital, Hospital.all, :id, :name) %>
 			<% end %>
-			<%= f.input :phone_number, required: true, autofocus: true %>
-		    <%= f.input :email, required: true, autofocus: true %>
-		    <%= f.input :password, required: true %>		    
+			<%= f.input :phone_number, required: true, autofocus: true, placeholder: "254722200200" %>
+		    <%= f.input :email, required: true, autofocus: true, placeholder: "name@domain.com" %>
+		    
+		    <%= f.label :password, "Password (must be at least 8 characters)" %>
+		    <%= f.input :password, required: true, label: false %>		    
 		    <%= f.input :password_confirmation, required: true %>
-		    <%= f.hidden_field :user_type, value: params[:type] %>
+		    <%= f.hidden_field :user_type, value: "Surgeon" %>
 		  </div>
 
 		  <div class="form-actions">
