@@ -1,6 +1,5 @@
 .row
 	.large-12.column
-		%p#notice= notice
 
 		%p
 			%b Patient:
@@ -43,7 +42,7 @@
 			%ul
 			- @surgery.implant_indications.each do |x|
 				%li
-					= "#{x.name},"
+					= "#{x.name}"
 		%p
 			%b Implant used:
 			%table
