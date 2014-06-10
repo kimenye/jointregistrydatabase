@@ -10,12 +10,7 @@
         %th Gender
         %th Weight
         %th Height
-        %th Race
-        %th Postcode
-        / %th Nhif number
         %th
-        %th
-        / %th
         %th
 
       - @patients.each do |patient|
@@ -26,10 +21,7 @@
           %td= patient.gender
           %td= patient.weight
           %td= patient.height
-          %td= patient.race
-          %td= patient.postcode
-          / %td= patient.nhif_number
-          %td= link_to 'Show', patient
+          / %td= link_to 'Show', patient
           / %td
           /   - if can? :add, Patient
           /     = link_to 'Edit', edit_patient_path(patient)
@@ -38,7 +30,7 @@
               = link_to 'Destroy', patient, :method => :delete, :data => { :confirm => 'Are you sure?' }
           %td
             - if can? :add, Surgery
-              = link_to 'Add Surgery', new_surgery_path
+              = link_to 'Add Surgery', new_surgery_path, class: "button tiny"
 
     %br
     - if can? :add, Patient
