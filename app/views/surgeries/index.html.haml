@@ -19,7 +19,7 @@
       - @surgeries.each do |surgery|
         %tr
           %td= surgery.patient.name
-          %td= surgery.user.name
+          %td= surgery.user.njr_code
           %td= surgery.date_of_surgery
           %td= surgery.hospital.name
           %td= surgery.side
