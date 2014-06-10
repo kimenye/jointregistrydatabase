@@ -69,13 +69,18 @@ class SurgeriesController < ApplicationController
           end
         end
         
-        implants_used = ImplantsUsed.new
-        implants_used.surgery_id = @surgery.id
-        implants_used.manufacturer_id = Manufacturer.find(params["manufacturer"]["manufacturer_id"]).id
-        implants_used.implant_id = Implant.find(params["implant"]["implant_id"]).id
-        implants_used.dimension_id = Dimension.find(params["dimension"]["dimension_id"]).id
-        implants_used.implant_size_id = ImplantSize.find(params["implant_size"]["implant_size_id"]).id
-        implants_used.save!
+        manufacturer = Manufacturer.find(params["manufacturer"]["manufacturer_id"])
+        implant = Implant.find(params["implant"]["implant_id"]
+
+        implant.dimensions.each do |dimension|
+          implants_used = ImplantsUsed.new
+          implants_used.surgery_id = @surgery.id
+          implants_used.manufacturer_id = manufacturer.id
+          implants_used.implant_id = implant.id
+          implants_used.dimension_id = dimension.id
+          implants_used.implant_size_id = ImplantSize.where(measurement: params["dimension"]["#{implant.dimensions.index(dimension)}"], dimension_id: dimension.id).first.id
+          implants_used.save!
+        end
       else
         format.html { render action: 'new' }
         format.json { render json: @surgery.errors, status: :unprocessable_entity }
