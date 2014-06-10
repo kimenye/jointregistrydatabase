@@ -28,9 +28,9 @@
               /   %a{:href => "#"} Sign Up
               /   %ul.dropdown
               %li
-                =link_to "Surgeons", new_registration_path(:user)
+                =link_to "Surgeons", "#{new_registration_path(:user)}?type=Surgeon"
               %li
-                =link_to "Hospital Admins"
+                =link_to "Hospital Admins", "#{new_registration_path(:user)}?type=HospitalAdmin"
               %li
                 =link_to "Implant Supplier"
               %li
