@@ -17,7 +17,32 @@
             = image_tag "logo.jpg", class: "logo"
     .row.nav
       .large-12.columns
-        
+        %nav.top-bar{"data-topbar" => ""}
+          %section.top-bar-section
+            %ul.left
+              %li
+                = link_to "Home", root_path
+              %li
+                = link_to "About", about_path
+              %li.has-dropdown
+                %a{:href => "#"} Sign Up
+                %ul.dropdown
+                  %li
+                    =link_to "Surgeons", new_registration_path(:user)
+                  %li
+                    =link_to "Hospital Admins"
+                  %li
+                    =link_to "Implant Supplier"
+              %li
+                = link_to "Patient Information"
+              %li
+                = link_to "Implant Information"
+            - if user_signed_in?
+              %ul.right
+                %li
+                  %a{href: destroy_user_session_path, method: :delete, "data-method" => "delete", rel: "nofollow"}
+                    Log out
+
     .main
       = render "layouts/messages"
       = yield
