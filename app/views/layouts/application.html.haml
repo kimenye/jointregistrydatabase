@@ -24,15 +24,15 @@
                 = link_to "Home", root_path
               %li
                 = link_to "About", about_path
-              %li.has-dropdown
-                %a{:href => "#"} Sign Up
-                %ul.dropdown
-                  %li
-                    =link_to "Surgeons", new_registration_path(:user)
-                  %li
-                    =link_to "Hospital Admins"
-                  %li
-                    =link_to "Implant Supplier"
+              / %li.has-dropdown
+              /   %a{:href => "#"} Sign Up
+              /   %ul.dropdown
+              %li
+                =link_to "Surgeons", new_registration_path(:user)
+              %li
+                =link_to "Hospital Admins"
+              %li
+                =link_to "Implant Supplier"
               %li
                 = link_to "Patient Information"
               %li
