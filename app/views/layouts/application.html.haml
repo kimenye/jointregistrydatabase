@@ -6,6 +6,7 @@
     %meta{:name => "description", :content => "#{content_for?(:description) ? yield(:description) : 'Jointregistrydatabase'}"}
     = stylesheet_link_tag "application", media: "all", "data-turbolinks-track" => false
     -# Modernizr is required for Zurb Foundation
+    = favicon_link_tag 'favicon.ico'
     = javascript_include_tag "vendor/modernizr"
     = javascript_include_tag "application", "data-turbolinks-track" => false
     = csrf_meta_tags
@@ -27,12 +28,13 @@
               / %li.has-dropdown
               /   %a{:href => "#"} Sign Up
               /   %ul.dropdown
+              -if !user_signed_in?
+                %li
+                  =link_to "Surgeons", new_registration_path(:user)
               %li
-                =link_to "Surgeons", "#{new_registration_path(:user)}?type=Surgeon"
+                =link_to "Hospitals"
               %li
-                =link_to "Hospital Admins", "#{new_registration_path(:user)}?type=HospitalAdmin"
-              %li
-                =link_to "Implant Supplier"
+                =link_to "Implant Suppliers"
               %li
                 = link_to "Patient Information"
               %li
