@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140610140800) do
+ActiveRecord::Schema.define(version: 20140610153935) do
 
   create_table "anasthetic_types", force: true do |t|
     t.string   "anasthetic_type"
@@ -133,6 +133,13 @@ ActiveRecord::Schema.define(version: 20140610140800) do
   add_index "implants_useds", ["implant_size_id"], name: "index_implants_useds_on_implant_size_id"
   add_index "implants_useds", ["manufacturer_id"], name: "index_implants_useds_on_manufacturer_id"
   add_index "implants_useds", ["surgery_id"], name: "index_implants_useds_on_surgery_id"
+
+  create_table "inter_operative_complications", force: true do |t|
+    t.string   "name"
+    t.string   "complication_type"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "manufacturers", force: true do |t|
     t.string   "name"
@@ -260,6 +267,16 @@ ActiveRecord::Schema.define(version: 20140610140800) do
   add_index "surgeries", ["patient_id"], name: "index_surgeries_on_patient_id"
   add_index "surgeries", ["surgeon_id"], name: "index_surgeries_on_surgeon_id"
   add_index "surgeries", ["user_id"], name: "index_surgeries_on_user_id"
+
+  create_table "surgery_complications", force: true do |t|
+    t.integer  "inter_operative_complication_id"
+    t.integer  "surgery_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "surgery_complications", ["inter_operative_complication_id"], name: "index_surgery_complications_on_inter_operative_complication_id"
+  add_index "surgery_complications", ["surgery_id"], name: "index_surgery_complications_on_surgery_id"
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false

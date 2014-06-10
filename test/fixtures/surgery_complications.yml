@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  inter_operative_complication_id: 
+  surgery_id: 
+
+two:
+  inter_operative_complication_id: 
+  surgery_id: 
