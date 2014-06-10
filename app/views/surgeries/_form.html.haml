@@ -22,33 +22,27 @@
       %fieldset
         %legend Procedure Details
         .row
-          .large-4.columns
-            = "Side"
-            = f.input :side, collection: ["Right", "Left"], :include_blank => false, :label => false
-          .large-4.columns
-            = "Patient Position"
-            = f.input :patient_position, collection: ["Lateral", "Supine"], :include_blank => false, :label => false      
-          .large-4.columns
-            = "Total Hip Approach"
-            = f.input :total_hip_approach, collection: ["Lateral", "Posterior", "Anterior"], :include_blank => false, :label => false
-        .row
           .large-6.columns
             = "Patient Procedure"
             = collection_select(:patient_procedure, :patient_procedure_id, PatientProcedure.all, :id, :name)
-        .row
-          .large-4.columns    
+          .large-3.end.columns
+            = "Side"
+            = f.input :side, collection: ["Right", "Left"], :include_blank => false, :label => false
+          .large-3.columns
+            = "Total Hip Approach"
+            = f.input :total_hip_approach, collection: ["Lateral", "Posterior", "Anterior"], :include_blank => false, :label => false        
+        .row          
+          .large-4.columns
+            = "Patient Position"
+            = f.input :patient_position, collection: ["Lateral", "Supine"], :include_blank => false, :label => false      
+          .large-4.end.columns    
             = "Anasthetic Type"
             = collection_select(:anasthetic_type, :anasthetic_type_id, AnastheticType.all, :id, :anasthetic_type)
-          .large-4.columns
-            = "Mechanical"
-            = collection_select(:mechanical, :mechanical_id, Mechanical.all, :id, :name)
-          .large-4.columns
-            = "Chemical"
-            = collection_select(:chemical, :chemical_id, Chemical.all, :id, :name)
+          
       .row
         .large-12.columns
           %fieldset
-            %legend Implant Indication            
+            %legend Surgery Indications
             %ul.large-block-grid-3.multicheckboxes            
               - @indications.each do |indication|
                 %li
@@ -78,6 +72,17 @@
                 %th
                   Size
               %tbody
+      %fieldset
+        %legend
+          Thromboprophylaxis
+        .row          
+          .large-4.columns
+            = "Chemical"
+            = collection_select(:chemical, :chemical_id, Chemical.all, :id, :name)
+          .large-4.end.columns
+            = "Mechanical"
+            = collection_select(:mechanical, :mechanical_id, Mechanical.all, :id, :name)
+            
 
         / .large-3.columns
         /   = "Dimensions"

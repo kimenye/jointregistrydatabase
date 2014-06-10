@@ -15,6 +15,7 @@
         / %th Nhif number
         %th
         %th
+        / %th
         %th
 
       - @patients.each do |patient|
@@ -29,12 +30,15 @@
           %td= patient.postcode
           / %td= patient.nhif_number
           %td= link_to 'Show', patient
-          %td
-            - if can? :add, Patient
-              = link_to 'Edit', edit_patient_path(patient)
+          / %td
+          /   - if can? :add, Patient
+          /     = link_to 'Edit', edit_patient_path(patient)
           %td
             - if can? :delete, Patient 
               = link_to 'Destroy', patient, :method => :delete, :data => { :confirm => 'Are you sure?' }
+          %td
+            - if can? :add, Surgery
+              = link_to 'Add Surgery', new_surgery_path
 
     %br
     - if can? :add, Patient

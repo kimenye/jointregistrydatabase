@@ -4,8 +4,8 @@ class SuperAdminMailer < ActionMailer::Base
     begin
       @user = user
       mail(:from => "info@jointregistry.co.ke", :to => "Super Admin <#{User.where(user_type: "SuperAdmin").first.email}>", :subject => "New Joint Registry Surgeon Awaiting Approval")
-    rescue
-
+    rescue => error
+      puts "#{error}"
     end
   end
 
