@@ -94,9 +94,17 @@ h4.subtitle, h5.subtitle {
 	}
 }
 
-.button {
+.button, .button:hover {
 	background-color: #43ac6a;
 	border-color: #3a945b;
+}
+
+table {
+	td {
+		.button {
+			margin-bottom: 0px;
+		}
+	}
 }
 
 .signup {
