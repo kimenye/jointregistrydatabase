@@ -40,8 +40,10 @@
 				= "#{x.name}"
 		%p
 			%b Implant indications:
+			%ul
 			- @surgery.implant_indications.each do |x|
-				= "#{x.name},"
+				%li
+					= "#{x.name},"
 		%p
 			%b Implant used:
 			%table

@@ -50,8 +50,12 @@ footer.row {
 	padding: 1rem 0px;
 }
 
+a {
+	color: #3a945b;
+}
+
 a:hover {
-	background-color: #ffffff;
+	color: #43ac6a;
 }
 
 .hero {
@@ -88,4 +92,9 @@ h4.subtitle {
 		padding-bottom: 0px;
 		font-size: .8em;
 	}
+}
+
+.button {
+	background-color: #43ac6a;
+	border-color: #3a945b;
 }

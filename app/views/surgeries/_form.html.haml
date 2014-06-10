@@ -3,80 +3,81 @@
   = simple_form_for(@surgery) do |f|
     = f.error_notification
     .form-inputs
-      %h6 General Details
-      .row
-        .large-6.columns
-          = "Patient"
-          = collection_select(:surgery, :patient_id, Patient.all, :id, :name)
-        .large-6.columns
-          = "Surgeon"
-          %input.disabled{type: "text", disabled: "disabled", value: current_user.name }
-      .row
-        .large-6.columns
-          = "Hospital"
-          = collection_select(:surgery, :hospital_id, Hospital.all, :id, :name)
-        .large-6.columns
-          = "Date of Surgery"
-          = f.input :date_of_surgery, as: :string, label: false, input_html: { "data-date-format" => "mm/dd/yy", class: "datepicker" }
-      %h6 Procedure Details
-      .row
-        .large-6.columns
-          = "Side"
-          = f.input :side, collection: ["Right", "Left"], :include_blank => false, :label => false
-        .large-6.columns
-          = "Patient Position"
-          = f.input :patient_position, collection: ["Lateral", "Supine"], :include_blank => false, :label => false
-      .row
-        .large-6.columns
-          = "Total Hip Approach"
-          = f.input :total_hip_approach, collection: ["Lateral", "Posterior", "Anterior"], :include_blank => false, :label => false
-        .large-6.columns
-          = "Patient Procedure"
-          = collection_select(:patient_procedure, :patient_procedure_id, PatientProcedure.all, :id, :name)
-      .row
-        .large-6.columns    
-          = "Anasthetic Type"
-          = collection_select(:anasthetic_type, :anasthetic_type_id, AnastheticType.all, :id, :anasthetic_type)
-        .large-6.columns
-          = "Mechanical"
-          = collection_select(:mechanical, :mechanical_id, Mechanical.all, :id, :name)
+      %fieldset
+        %legend General Details
+
+        .row
+          .large-4.columns
+            = "Patient"
+            = collection_select(:surgery, :patient_id, Patient.all, :id, :name)
+          / .large-3.columns
+          /   = "Surgeon"
+          /   %input.disabled{type: "text", disabled: "disabled", value: current_user.name }
+          .large-4.end.columns
+            = "Hospital"
+            = collection_select(:surgery, :hospital_id, Hospital.all, :id, :name)
+          .large-4.columns
+            = "Date of Surgery"
+            = f.input :date_of_surgery, as: :string, label: false, input_html: { "data-date-format" => "mm/dd/yy", class: "datepicker" }
+      %fieldset
+        %legend Procedure Details
+        .row
+          .large-4.columns
+            = "Side"
+            = f.input :side, collection: ["Right", "Left"], :include_blank => false, :label => false
+          .large-4.columns
+            = "Patient Position"
+            = f.input :patient_position, collection: ["Lateral", "Supine"], :include_blank => false, :label => false      
+          .large-4.columns
+            = "Total Hip Approach"
+            = f.input :total_hip_approach, collection: ["Lateral", "Posterior", "Anterior"], :include_blank => false, :label => false
+        .row
+          .large-6.columns
+            = "Patient Procedure"
+            = collection_select(:patient_procedure, :patient_procedure_id, PatientProcedure.all, :id, :name)
+        .row
+          .large-4.columns    
+            = "Anasthetic Type"
+            = collection_select(:anasthetic_type, :anasthetic_type_id, AnastheticType.all, :id, :anasthetic_type)
+          .large-4.columns
+            = "Mechanical"
+            = collection_select(:mechanical, :mechanical_id, Mechanical.all, :id, :name)
+          .large-4.columns
+            = "Chemical"
+            = collection_select(:chemical, :chemical_id, Chemical.all, :id, :name)
       .row
         .large-12.columns
-          = "Chemical"
-          = collection_select(:chemical, :chemical_id, Chemical.all, :id, :name)
-      .row
-        .large-12.columns
-          %h6 Implant Details
-          %br
-          = "Implant Indication"
-          %br
-          %br
-          %ul.large-block-grid-3.multicheckboxes            
-            - @indications.each do |indication|
-              %li
-                = check_box_tag "indications[]", indication.name
-                = indication.name
-      %br
-      .row
-        .large-3.columns
-          = "Manufacturer"
-          = collection_select(:manufacturer, :manufacturer_id, Manufacturer.all, :id, :name)
-        .large-3.columns
-          = "Implant"
-          = collection_select(:implant, :implant_id, Implant.all, :id, :name, {}, { class: "implant_select" })
-        .large-2.columns
-          %br
-          %a.button.tiny.get_sizes
-            Get Sizes
-        .large-4.columns
-          = "Sizes"
-          %table.sizes
-            %thead
-              %th
-                Dimension
-              %th
-                Size
-            %tbody
+          %fieldset
+            %legend Implant Indication            
+            %ul.large-block-grid-3.multicheckboxes            
+              - @indications.each do |indication|
+                %li
+                  = check_box_tag "indications[]", indication.name
+                  = indication.name
+      
+      %fieldset
+        %legend Implant
+        .row          
+          .large-3.columns
+            = "Manufacturer"
+            = collection_select(:manufacturer, :manufacturer_id, Manufacturer.all, :id, :name)
+          .large-3.columns
+            = "Implant"
+            = collection_select(:implant, :implant_id, Implant.all, :id, :name, {}, { class: "implant_select" })
+          .large-2.end.columns
+            %br
+            %a.button.tiny.get_sizes
+              Get Sizes
+        .row
+          .large-12.columns
+            = "Sizes"
+            %table.sizes
+              %thead
+                %th
+                  Dimension
+                %th
+                  Size
+              %tbody
 
         / .large-3.columns
         /   = "Dimensions"
@@ -88,4 +89,4 @@
 
 
     .form-actions
-      = f.button :submit, class: "button"
+      = f.button :submit, class: "button tiny"

@@ -7,11 +7,11 @@
         %th Patient
         %th Surgeon
         %th Date of surgery
+        %th Hospital
         %th Side
         %th Anasthetic type
         %th Chemical
         %th Mechanical
-        %th Implant indication
         %th
         %th
         %th
@@ -19,13 +19,13 @@
       - @surgeries.each do |surgery|
         %tr
           %td= surgery.patient.name
-          %td= surgery.surgeon.name
+          %td= surgery.user.name
           %td= surgery.date_of_surgery
+          %td= surgery.hospital.name
           %td= surgery.side
-          %td= surgery.anasthetic_types.each {|x| x.id}
-          %td= surgery.chemicals.each {|x| x.name}
-          %td= surgery.mechanicals.each {|x| x.name}
-          / %td= surgery.implant_indications
+          %td= surgery.anasthetic_types.first.anasthetic_type
+          %td= surgery.chemicals.first.name
+          %td= surgery.mechanicals.first.name
           %td= link_to 'Show', surgery
           %td
             - if can? :add, Surgery
