@@ -9,12 +9,17 @@
 
 		  <div class="form-inputs">
 		    <%= f.input :name, required: true, autofocus: true %>
-			<%= f.input :registration_code, required: true, autofocus: true %>
+		    <% if params[:type] != "HospitalAdmin" %>
+				<%= f.input :registration_code, required: true, autofocus: true %>
+			<% else %>
+				<%= f.label :hospital %>				
+				<%= f.collection_select(:hospital, Hospital.all, :id, :name) %>
+			<% end %>
 			<%= f.input :phone_number, required: true, autofocus: true %>
 		    <%= f.input :email, required: true, autofocus: true %>
 		    <%= f.input :password, required: true %>		    
 		    <%= f.input :password_confirmation, required: true %>
-		    <%= f.hidden_field :user_type, value: "Surgeon" %>
+		    <%= f.hidden_field :user_type, value: params[:type] %>
 		  </div>
 
 		  <div class="form-actions">

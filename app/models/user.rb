@@ -19,6 +19,8 @@
 #  name                   :string(255)
 #  user_type              :string(255)
 #  phone_number           :string(255)
+#  approved               :boolean
+#  hospital_id            :integer
 #
 
 class User < ActiveRecord::Base
@@ -26,6 +28,8 @@ class User < ActiveRecord::Base
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
+
+  belongs_to :hospital
 
   after_create :send_super_admin_mail
   def send_super_admin_mail
