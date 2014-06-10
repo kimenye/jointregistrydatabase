@@ -25,7 +25,8 @@ Jointregistrydatabase::Application.configure do
   # Debug mode disables concatenation and preprocessing of assets.
   # This option may cause significant delays in view rendering with a large
   # number of complex assets.
-  config.assets.debug = true  
+  config.assets.debug = true 
+  config.assets.paths << "#{Rails.root}/app/assets/files" 
 
     config.action_mailer.smtp_settings = {
       :address   => "smtp.mandrillapp.com",
