@@ -43,6 +43,7 @@ class SurgeriesController < ApplicationController
   # POST /surgeries.json
   def create
     @surgery = Surgery.new(surgery_params)
+    @surgery.user_id = current_user.id
 
     respond_to do |format|
       if @surgery.save!
@@ -70,7 +71,7 @@ class SurgeriesController < ApplicationController
         end
         
         manufacturer = Manufacturer.find(params["manufacturer"]["manufacturer_id"])
-        implant = Implant.find(params["implant"]["implant_id"]
+        implant = Implant.find(params["implant"]["implant_id"])
 
         implant.dimensions.each do |dimension|
           implants_used = ImplantsUsed.new
