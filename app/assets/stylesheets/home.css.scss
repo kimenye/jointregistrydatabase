@@ -95,6 +95,10 @@ table {
 	}
 }
 
+select option[disabled] {
+    display: none;
+}
+
 .signup {
 	padding: 1rem;
 	border: 1px solid #eee;

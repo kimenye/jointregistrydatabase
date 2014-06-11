@@ -9,13 +9,13 @@
         .row
           .large-4.columns
             = "Patient"
-            = collection_select(:surgery, :patient_id, Patient.all, :id, :name, include_blank: true)
+            = collection_select(:surgery, :patient_id, Patient.all, :id, :name, include_blank: "Select One")
           / .large-3.columns
           /   = "Surgeon"
           /   %input.disabled{type: "text", disabled: "disabled", value: current_user.name }
           .large-4.end.columns
             = "Hospital"
-            = collection_select(:surgery, :hospital_id, Hospital.all, :id, :name, include_blank: true)
+            = collection_select(:surgery, :hospital_id, Hospital.all, :id, :name, include_blank: "Select One")
           .large-4.columns
             = "Date of Surgery"
             = f.input :date_of_surgery, as: :string, label: false, input_html: { placeholder: "dd/mm/yy", "data-date-format" => "mm/dd/yy", class: "datepicker" }
@@ -36,18 +36,18 @@
                   = procedure.name
           .large-3.end.columns
             = "Side"
-            = f.input :side, collection: ["Right", "Left"], :include_blank => true, :label => false
+            = f.input :side, collection: ["Right", "Left"], :include_blank => "Select One", :label => false
           .large-3.columns
             .approach.hide
               = "Total Hip Approach"
-              = f.input :total_hip_approach, collection: ["Lateral", "Posterior", "Anterior"], :include_blank => true, :label => false        
+              = f.input :total_hip_approach, collection: ["Lateral", "Posterior", "Anterior"], :include_blank => "Select One", :label => false        
         .row          
           .large-4.columns
             = "Patient Position"
-            = f.input :patient_position, collection: ["Lateral", "Supine"], :include_blank => true, :label => false      
+            = f.input :patient_position, collection: ["Lateral", "Supine"], :include_blank => "Select One", :label => false      
           .large-4.end.columns    
             = "Anasthetic Type"
-            = collection_select(:anasthetic_type, :anasthetic_type_id, AnastheticType.all, :id, :anasthetic_type, include_blank: true)
+            = collection_select(:anasthetic_type, :anasthetic_type_id, AnastheticType.all, :id, :anasthetic_type, include_blank: "Select One")
           
       .row
         .large-12.columns
@@ -67,7 +67,15 @@
           /   = collection_select(:manufacturer, :manufacturer_id, Manufacturer.all, :id, :name, include_blank: true)
           .large-3.columns
             = "Implant"
-            = collection_select(:implant, :implant_id, Implant.all, :id, :name, include_blank: true, class: "implant_select")
+            / = collection_select(:implant, :implant_id, Implant.all, :id, :name, include_blank: true, class: "implant_select")
+
+            / = f.select :implant, :implant_id, Implant.all.map {|c| [c.name, c.id, {:'data-type' => c.implant_type }]}
+            %select#implant_implant_id{name: "implant[implant_id]"}
+              %option{value: ""}
+                Select One
+              - Implant.all.each do |i|
+                %option{value: i.id, "data-implant-type" => i.implant_type } 
+                  = i.name
           .large-2.end.columns
             %br
             %a.button.tiny.get_sizes

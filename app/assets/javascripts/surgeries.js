@@ -28,6 +28,7 @@ $(function() {
 	$('#patient_procedure_patient_procedure_id').change(function(){
 		var procedureType = $(this).find('option:selected').data("procedure-type");
 		if (procedureType == "Hip") {
+			// %('option')
 			$('.approach.hide').removeClass('hide');
 		} else {
 			$('.approach').addClass('hide');
