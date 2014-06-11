@@ -9,9 +9,7 @@
         %th Date of surgery
         %th Hospital
         %th Side
-        %th Anasthetic type
-        %th Chemical
-        %th Mechanical
+        %th Procedure        
         %th
         %th
         %th
@@ -23,9 +21,7 @@
           %td= surgery.date_of_surgery
           %td= surgery.hospital.name
           %td= surgery.side
-          %td= surgery.anasthetic_types.first.anasthetic_type
-          %td= surgery.chemicals.first.name
-          %td= surgery.mechanicals.first.name
+          %td= surgery.patient_procedures.first.name
           %td= link_to 'Show', surgery
           %td
             - if can? :add, Surgery

@@ -72,13 +72,13 @@ class SurgeriesController < ApplicationController
           end
         end
         
-        manufacturer = Manufacturer.find(params["manufacturer"]["manufacturer_id"])
+        # manufacturer = Manufacturer.find(params["manufacturer"]["manufacturer_id"])
         implant = Implant.find(params["implant"]["implant_id"])
 
         implant.dimensions.each do |dimension|
           implants_used = ImplantsUsed.new
           implants_used.surgery_id = @surgery.id
-          implants_used.manufacturer_id = manufacturer.id
+          implants_used.manufacturer_id = implant.manufacturer.id
           implants_used.implant_id = implant.id
           implants_used.dimension_id = dimension.id
           implants_used.implant_size_id = ImplantSize.where(measurement: params["dimension"]["#{implant.dimensions.index(dimension)}"], dimension_id: dimension.id).first.id
