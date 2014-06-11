@@ -1,3 +1,14 @@
+# == Schema Information
+#
+# Table name: procedures_useds
+#
+#  id                   :integer          not null, primary key
+#  surgery_id           :integer
+#  patient_procedure_id :integer
+#  created_at           :datetime
+#  updated_at           :datetime
+#
+
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
 one:

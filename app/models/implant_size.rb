@@ -4,7 +4,7 @@
 #
 #  id           :integer          not null, primary key
 #  dimension_id :integer
-#  measurement  :float
+#  measurement  :string(255)
 #  created_at   :datetime
 #  updated_at   :datetime
 #

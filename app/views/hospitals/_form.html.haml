@@ -1,0 +1,12 @@
+= simple_form_for(@hospital) do |f|
+	= f.error_notification
+
+
+	.form-inputs
+		= f.input :name
+		= f.input :location
+		= f.input :website
+		= f.input :email
+		= f.file_field :logo
+	.form-actions
+		= f.button :submit

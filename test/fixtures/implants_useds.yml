@@ -1,3 +1,17 @@
+# == Schema Information
+#
+# Table name: implants_useds
+#
+#  id              :integer          not null, primary key
+#  surgery_id      :integer
+#  manufacturer_id :integer
+#  implant_id      :integer
+#  dimension_id    :integer
+#  implant_size_id :integer
+#  created_at      :datetime
+#  updated_at      :datetime
+#
+
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
 one:

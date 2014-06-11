@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	<p>Dear Super Admin,</p>
+	<p>
+		A hospital with the following details has been registered:
+		<br>
+		Name: <%= @hospital.name %>
+		<br>
+		Location: <%= @hospital.location %>
+		<br>
+		Website: <%= @hospital.website %>
+		<br>
+		Email: <%= @hospital.email %>
+		<br>
+		Click <%= link_to "here", "#{root_url}admin/hospital/#{@hospital.id}/edit" %> to view/approve it.
+</body>
+</html>

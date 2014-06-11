@@ -1,0 +1,29 @@
+.row
+	.large-12.column
+		%p
+			%b Hospital:
+			= @hospital.name
+	.large-12.column
+		%p
+			%b Location:
+			= @hospital.location
+	.large-12.column
+		%p
+			%b Website:
+			= @hospital.website
+	.large-12.column
+		%p
+			%b Email:
+			= @hospital.email
+	.large-12.column
+		%p
+			%b Approved?:
+			= @hospital.approved
+	.large-12.column
+		%p
+			%b Logo:
+			= image_tag @hospital.logo.url
+
+= link_to 'Edit', edit_hospital_path(@hospital)
+\|
+= link_to 'Back', hospitals_path

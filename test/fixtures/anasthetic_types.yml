@@ -1,3 +1,14 @@
+# == Schema Information
+#
+# Table name: anasthetic_types
+#
+#  id              :integer          not null, primary key
+#  anasthetic_type :string(255)
+#  created_at      :datetime
+#  updated_at      :datetime
+#  surgery_id      :integer
+#
+
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
 one:

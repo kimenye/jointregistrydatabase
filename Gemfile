@@ -19,6 +19,7 @@ gem 'simple_form'
 gem 'mysql2'
 gem 'rails_admin'
 gem 'annotate'
+gem "paperclip", "~> 4.1"
 group :development do
   gem 'better_errors'
   gem 'binding_of_caller', :platforms=>[:mri_19, :mri_20, :rbx]

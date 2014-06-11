@@ -4,6 +4,8 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   before_action :configure_permitted_parameters, if: :devise_controller?
 
+  helper_method :is_user_admin
+
   before_filter :store_location
 
   def store_location
@@ -22,7 +24,8 @@ class ApplicationController < ActionController::Base
   end
 
   rescue_from CanCan::AccessDenied do |exception|
-    redirect_to root_path, :alert => exception.message
+    # redirect_to root_path, :alert => exception.message
+    redirect_to main_app.root_path, :alert => exception.message
   end
 
   protected
@@ -32,6 +35,14 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.for(:sign_up) << :registration_code
     devise_parameter_sanitizer.for(:sign_up) << :phone_number
     devise_parameter_sanitizer.for(:sign_up) << :user_type
+  end
+
+  def is_user_admin?
+    super_admin = User.where(user_type: "SuperAdmin").first
+    unless current_user == super_admin
+      sign_out current_user
+      redirect_to root_path, alert: "You need to sign in as the Super Admin to perfom this action"
+    end
   end
 
 end

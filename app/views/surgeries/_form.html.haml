@@ -15,7 +15,7 @@
           /   %input.disabled{type: "text", disabled: "disabled", value: current_user.name }
           .large-4.end.columns
             = "Hospital"
-            = collection_select(:surgery, :hospital_id, Hospital.all, :id, :name, include_blank: "Select One")
+            = collection_select(:surgery, :hospital_id, Hospital.where(approved: true), :id, :name, include_blank: "Select One")
           .large-4.columns
             = "Date of Surgery"
             = f.input :date_of_surgery, as: :string, label: false, input_html: { placeholder: "dd/mm/yy", "data-date-format" => "mm/dd/yy", class: "datepicker" }

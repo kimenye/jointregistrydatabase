@@ -22,12 +22,12 @@ class UsersController < ApplicationController
     end
   end
 
-  private
-    def is_user_admin?
-      super_admin = User.where(user_type: "SuperAdmin").first
-      unless current_user == super_admin
-        sign_out current_user
-        redirect_to root_path, alert: "You need to sign in as the Super Admin to perfom this action"
-      end
-    end
+  # private
+  #   def is_user_admin?
+  #     super_admin = User.where(user_type: "SuperAdmin").first
+  #     unless current_user == super_admin
+  #       sign_out current_user
+  #       redirect_to root_path, alert: "You need to sign in as the Super Admin to perfom this action"
+  #     end
+  #   end
 end
