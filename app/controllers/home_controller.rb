@@ -10,4 +10,8 @@ class HomeController < ApplicationController
 	def manufacturers
 		@manufacturer = Manufacturer.new
 	end
+
+	def under_construction
+		
+	end
 end

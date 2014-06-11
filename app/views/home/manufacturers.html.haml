@@ -5,17 +5,8 @@
         Manufacturers
   .row
     .large-8.columns
-      / %p
-      /   The following hospitals are participating in the Total Joint Registry
-      / %ul.large-block-grid-4
-      /   %li.small
-      /     = image_tag "cure-kenya.png", class: ""
-      /   %li
-      /     = image_tag "moi-teaching.png", class: ""
-      /   %li
-      /     = image_tag "tenwek.png", class: ""
-      /   %li.small
-      /     = image_tag "kijabe_hospital.png", class: ""
+      %p
+        Would you like your equipment and implants featured in the Total Joint Registry? Registration is easy. Just fill in the form on the right and one of the administrators will verify your information and allow you to create an account.
     .large-4.columns.signup
       = simple_form_for(@manufacturer) do |f|
         = f.error_notification
@@ -29,15 +20,3 @@
           = f.file_field :logo
         .form-actions
           = f.button :submit, class: "button tiny"
-
-  .row
-    .large-12.columns
-      / %ul.large-block-grid-4
-      /   %li.small
-      /     = image_tag "cure-kenya.png", class: ""
-      /   %li
-      /     = image_tag "moi-teaching.png", class: ""
-      /   %li
-      /     = image_tag "tenwek.png", class: ""
-      /   %li.small
-      /     = image_tag "kijabe_hospital.png", class: ""

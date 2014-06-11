@@ -42,11 +42,11 @@
                     = link_to "Hip Replacements", patient_information_hip_path
                     = link_to "Knee Replacements", patient_information_knee_path
               %li
-                = link_to "Implant Information"
+                = link_to "Implant Information", "/implants"
               %li
-                = link_to "News"
+                = link_to "News", "/news"
               %li
-                = link_to "Reports"
+                = link_to "Reports", "/reports"
             - if user_signed_in?
               %ul.right
                 %li

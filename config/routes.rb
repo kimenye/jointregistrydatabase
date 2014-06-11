@@ -20,6 +20,10 @@ Jointregistrydatabase::Application.routes.draw do
   post "/hospitals" => "hospitals#create"
   get "/manufacturers" => "home#manufacturers"
   post "/manufacturers" => "manufacturers#create"
+  get "/under_construction" => "home#under_construction"
+  get '/implants', to: redirect('/under_construction')
+  get '/news', to: redirect('/under_construction')
+  get '/reports', to: redirect('/under_construction')
   get "/patient_information_hip" => "home#patient_information_hip"
   get "/patient_information_knee" => "home#patient_information_knee"
   get "/get_sizes" => "surgeries#get_sizes"
