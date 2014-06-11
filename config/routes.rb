@@ -18,6 +18,8 @@ Jointregistrydatabase::Application.routes.draw do
   get "/about" => "home#about"
   get "/hospitals" => "home#hospitals"
   post "/hospitals" => "hospitals#create"
+  get "/manufacturers" => "home#manufacturers"
+  post "/manufacturers" => "manufacturers#create"
   get "/patient_information_hip" => "home#patient_information_hip"
   get "/patient_information_knee" => "home#patient_information_knee"
   get "/get_sizes" => "surgeries#get_sizes"

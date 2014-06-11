@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	<p>Dear Super Admin,</p>
+	<p>
+		A manufacturer with the following details has been registered:
+		<br>
+		Name: <%= @manufacturer.name %>
+		<br>
+		Website: <%= @manufacturer.website %>
+		<br>
+		Email: <%= @manufacturer.email %>
+		<br>
+		Click <%= link_to "here", "#{root_url}admin/manufacturer/#{@manufacturer.id}/edit" %> to view/approve it.
+</body>
+</html>

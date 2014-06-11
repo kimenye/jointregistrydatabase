@@ -6,4 +6,8 @@ class HomeController < ApplicationController
 	def hospitals
 		@hospital = Hospital.new
 	end
+
+	def manufacturers
+		@manufacturer = Manufacturer.new
+	end
 end

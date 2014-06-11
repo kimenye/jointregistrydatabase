@@ -9,10 +9,19 @@ class SuperAdminMailer < ActionMailer::Base
     end
   end
 
-	def hospital_approval(hospital)
+  def hospital_approval(hospital)
     begin
       @hospital = hospital
       mail(:from => "info@jointregistry.co.ke", :to => "Super Admin <#{User.where(user_type: "SuperAdmin").first.email}>", :subject => "New Hospital Awaiting Approval")
+    rescue => error
+      puts "#{error}"
+    end
+  end
+
+	def manufacturer_approval(manufacturer)
+    begin
+      @manufacturer = manufacturer
+      mail(:from => "info@jointregistry.co.ke", :to => "Super Admin <#{User.where(user_type: "SuperAdmin").first.email}>", :subject => "New Manufacturer Awaiting Approval")
     rescue => error
       puts "#{error}"
     end
