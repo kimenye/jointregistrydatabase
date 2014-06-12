@@ -4,7 +4,7 @@
 
     %p
       %b Medical record number:
-      = @patient.medical_record_number
+      = @patient.medical_record_number if !@patient.medical_record_number.nil?
     %p
       %b Name:
       = @patient.name
@@ -20,9 +20,6 @@
     %p
       %b Height:
       = @patient.height
-    %p
-      %b Medical record number::
-      = @patient.medical_record_number
 
     = link_to 'Edit', edit_patient_path(@patient)
     \|

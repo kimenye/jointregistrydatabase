@@ -30,7 +30,7 @@
               = link_to 'Destroy', patient, :method => :delete, :data => { :confirm => 'Are you sure?' }
           %td
             - if can? :add, Surgery
-              = link_to 'Add Surgery', new_surgery_path, class: "button tiny"
+              = link_to 'Add Surgery', "#{new_surgery_path}?patient_name=#{patient.name}&patient_id=#{patient.id}", class: "button tiny"
 
     %br
     - if can? :add, Patient

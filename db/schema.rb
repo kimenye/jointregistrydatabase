@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140611095528) do
+ActiveRecord::Schema.define(version: 20140612075245) do
 
   create_table "anasthetic_types", force: true do |t|
     t.string   "anasthetic_type"
@@ -200,7 +200,10 @@ ActiveRecord::Schema.define(version: 20140611095528) do
     t.string   "id_number"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "user_id"
   end
+
+  add_index "patients", ["user_id"], name: "index_patients_on_user_id"
 
   create_table "procedures_useds", force: true do |t|
     t.integer  "surgery_id"

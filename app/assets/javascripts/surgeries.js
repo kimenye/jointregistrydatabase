@@ -30,11 +30,22 @@ $(function() {
 		if (procedureType == "Hip") {
 			// %('option')
 			$('.approach.hide').removeClass('hide');
+			$('#surgery_patient_position').prop("disabled", false).val("Select One");
 		} else {
 			$('.approach').addClass('hide');
+			$('#surgery_patient_position').prop("disabled", true).val("Supine");
+			$(this).append('<input id="surgery_patient_position" name="surgery[patient_position]" type="hidden" value="Supine">')
 		}
 
         $('.to-be-hidden').hide();
         $('#' + procedureType).show();
     });
+
+    // $("#complications_").click(function() {
+    //    if ($(this).is(":checked")) {
+    //       console.log("I got checked")
+    //    } else {
+           
+    //    }
+    //  });
 });

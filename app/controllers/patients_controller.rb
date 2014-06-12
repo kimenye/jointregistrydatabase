@@ -1,12 +1,18 @@
 class PatientsController < ApplicationController
   before_action :set_patient, only: [:show, :edit, :update, :destroy]
+  before_filter :can_view_patient?, only: [:show, :edit, :update, :destroy]
   # before_filter :authenticate_hospital_admin!
   before_filter :authenticate_user!
 
   # GET /patients
   # GET /patients.json
   def index
-    @patients = Patient.all
+    # if can? :see_all, Patient 
+    #   @patients = Patient.all
+    # else
+    #   @patients = Patient.where(user_id: current_user.id)
+    # end
+    @patients = Patient.where(user_id: current_user.id)
   end
 
   # GET /patients/1
@@ -27,6 +33,7 @@ class PatientsController < ApplicationController
   # POST /patients.json
   def create
     @patient = Patient.new(patient_params)
+    @patient.user_id = current_user.id
 
     respond_to do |format|
       if @patient.save
@@ -67,6 +74,14 @@ class PatientsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_patient
       @patient = Patient.find(params[:id])
+      # @patient = Patient.where(id: params[:id], user_id: current_user.id).first
+    end
+
+    def can_view_patient?
+      patient = Patient.where(id: params[:id], user_id: current_user.id).first
+      unless !patient.nil?
+        redirect_to patients_path, alert: "You are not allowed to view this patient!"
+      end
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

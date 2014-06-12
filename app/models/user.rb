@@ -32,15 +32,16 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   belongs_to :hospital
+  has_many :patients
 
   after_create :send_super_admin_mail
   def send_super_admin_mail
     SuperAdminMailer.user_approval(self).deliver
-    self.njr_code = generate_unique_registration_code
+    self.njr_code = generate_unique_njr_code
     self.save!
   end
 
-  def generate_unique_registration_code
+  def generate_unique_njr_code
     cs = [*'0'..'9', *'a'..'z', *'A'..'Z']-['O']-['I']-['1']-['0']-['i']-['o']
     6.times.map { cs.sample }.join.upcase
   end

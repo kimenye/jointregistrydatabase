@@ -9,7 +9,11 @@
         .row
           .large-4.columns
             = "Patient"
-            = collection_select(:surgery, :patient_id, Patient.all, :id, :name, include_blank: "Select One")
+            - if params[:patient_name]
+              %input.disabled{type: "text", disabled: "disabled", value: params[:patient_name], name: "patient"}
+              = f.hidden_field :patient_id, value: params[:patient_id]
+            - else
+              = collection_select(:surgery, :patient_id, Patient.where(user_id: current_user), :id, :name, include_blank: "Select One")
           / .large-3.columns
           /   = "Surgeon"
           /   %input.disabled{type: "text", disabled: "disabled", value: current_user.name }
@@ -44,7 +48,7 @@
         .row          
           .large-4.columns
             = "Patient Position"
-            = f.input :patient_position, collection: ["Lateral", "Supine"], :include_blank => "Select One", :label => false      
+            = f.input :patient_position, collection: ["Lateral", "Supine"], :include_blank => "Select One", :label => false    
           .large-4.end.columns    
             = "Anasthetic Type"
             = collection_select(:anasthetic_type, :anasthetic_type_id, AnastheticType.all, :id, :anasthetic_type, include_blank: "Select One")

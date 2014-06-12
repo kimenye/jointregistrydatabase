@@ -68,7 +68,7 @@
 						%td
 							/ = @surgery.implants_used.last.implant_size.measurement
 							- @surgery.implants_used.each do |implants|
-								= implants.implant_size.measurement
+								= implants.implant_size.measurement if !implants.implant_size.nil?
 								%br
 
 		/ = link_to 'Edit', edit_surgery_path(@surgery)

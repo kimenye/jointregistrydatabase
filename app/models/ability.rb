@@ -16,6 +16,7 @@ class Ability
     elsif user.user_type == "Surgeon"
         can :add, Surgery
         can :add, Patient
+        # can :read, Patient if !Patient.find_by_user_id(user.id).nil?
     end
 
     # Define abilities for the passed in user here. For example:

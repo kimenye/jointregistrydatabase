@@ -18,4 +18,5 @@
 
 class Patient < ActiveRecord::Base
 	has_many :surgeries
+	belongs_to :user
 end
