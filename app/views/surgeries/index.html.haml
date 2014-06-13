@@ -16,10 +16,10 @@
 
       - @surgeries.each do |surgery|
         %tr
-          %td= surgery.patient.name
+          %td= surgery.patient.name if !surgery.patient.nil?
           %td= surgery.user.njr_code
           %td= surgery.date_of_surgery
-          %td= surgery.hospital.name
+          %td= surgery.hospital.name if !surgery.hospital.nil?
           %td= surgery.side
           %td= surgery.patient_procedures.first.name
           %td= link_to 'Show', surgery

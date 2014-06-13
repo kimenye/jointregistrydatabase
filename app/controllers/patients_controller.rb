@@ -79,7 +79,7 @@ class PatientsController < ApplicationController
 
     def can_view_patient?
       patient = Patient.where(id: params[:id], user_id: current_user.id).first
-      unless !patient.nil?
+      unless !patient.nil? || current_user.user_type == "SuperAdmin"
         redirect_to patients_path, alert: "You are not allowed to view this patient!"
       end
     end

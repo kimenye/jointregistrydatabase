@@ -58,7 +58,7 @@
           %fieldset
             %legend Surgery Indications
             %ul.large-block-grid-3.multicheckboxes            
-              - @indications.each do |indication|
+              - ImplantIndication.all.each do |indication|
                 %li
                   = check_box_tag "indications[]", indication.name
                   = indication.name
@@ -118,12 +118,12 @@
           %fieldset
             %legend Inter-operative Complications
             %ul.large-block-grid-3.multicheckboxes#Knee.to-be-hidden
-              - @knee_complications.each do |complication|
+              - InterOperativeComplication.where(complication_type: "Knee").each do |complication|
                 %li
                   = check_box_tag "complications[]", complication.name
                   = complication.name
             %ul.large-block-grid-3.multicheckboxes#Hip.to-be-hidden
-              - @hip_complications.each do |complication|
+              - InterOperativeComplication.where(complication_type: "Hip").each do |complication|
                 %li
                   = check_box_tag "complications[]", complication.name
                   = complication.name

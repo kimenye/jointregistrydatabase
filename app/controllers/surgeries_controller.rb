@@ -1,6 +1,7 @@
 class SurgeriesController < ApplicationController
   before_action :set_surgery, only: [:show, :edit, :update, :destroy]
   # before_filter :authenticate_hospital_admin!
+  before_filter :can_view_surgery?, only: [:show, :edit, :update, :destroy]
   before_filter :authenticate_user!
 
   # GET /surgeries
@@ -21,9 +22,9 @@ class SurgeriesController < ApplicationController
   # GET /surgeries/new
   def new
     @surgery = Surgery.new
-    @indications = ImplantIndication.all
-    @knee_complications = InterOperativeComplication.where(complication_type: "Knee")
-    @hip_complications = InterOperativeComplication.where(complication_type: "Hip")
+    # @indications = ImplantIndication.all
+    # @knee_complications = InterOperativeComplication.where(complication_type: "Knee")
+    # @hip_complications = InterOperativeComplication.where(complication_type: "Hip")
   end
 
   # GET /surgeries/1/edit
@@ -123,6 +124,13 @@ class SurgeriesController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_surgery
       @surgery = Surgery.find(params[:id])
+    end
+
+    def can_view_surgery?
+      surgery = Surgery.where(id: params[:id], user_id: current_user.id).first
+      unless !surgery.nil? || current_user.user_type == "SuperAdmin"
+        redirect_to surgeries_path, alert: "You are not allowed to view this surgery!"
+      end
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
