@@ -38,8 +38,9 @@ class ApplicationController < ActionController::Base
   end
 
   def is_user_admin?
-    super_admin = User.where(user_type: "SuperAdmin").first
-    unless current_user == super_admin
+    # super_admin = User.where(user_type: "SuperAdmin").first
+    # unless current_user == super_admin
+    unless current_user.user_type == "SuperAdmin"
       sign_out current_user
       redirect_to root_path, alert: "You need to sign in as the Super Admin to perfom this action"
     end

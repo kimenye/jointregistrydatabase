@@ -6,7 +6,7 @@
 <body>
 	<p>Dear <%= @user.name %>,</p>
 	<p>
-		Your account has been approved. Click <%= link_to "here", "http://localhost:3000#{new_user_session_path}"%> to sign in.
+		Your account has been approved. Click <%= link_to "here", "#{ENV['BASE_URL']}"%> to sign in.
 	</p>
 </body>
 </html>
