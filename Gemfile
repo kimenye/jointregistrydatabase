@@ -16,7 +16,7 @@ gem 'foundation-rails'
 gem 'haml-rails'
 gem 'rolify'
 gem 'simple_form'
-gem 'mysql2'
+# gem 'mysql2'
 gem 'rails_admin'
 gem 'annotate'
 gem "paperclip", "~> 4.1"

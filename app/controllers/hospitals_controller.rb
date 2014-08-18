@@ -63,6 +63,20 @@ class HospitalsController < ApplicationController
     end
   end
 
+  def approve_hospitals
+    @hospital = Hospital.find(params[:id])
+    @hospital.approved = !@hospital.approved
+    @hospital.save!
+    redirect_to hospitals_path, notice: "hospital has been approved!"
+    # if @hospital.approved
+    #   SuperAdminMailer.hospital_approval_notification(@hospital).deliver
+    #   redirect_to hospitals_path, notice: "hospital has been approved!"
+    # else
+    #   SuperAdminMailer.hospital_unapproval_notification(@hospital).deliver
+    #   redirect_to hospitals_path, notice: "hospital has been unapproved!"
+    # end
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_hospital

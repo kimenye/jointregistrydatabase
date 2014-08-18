@@ -37,7 +37,7 @@ class PatientsController < ApplicationController
 
     respond_to do |format|
       if @patient.save
-        format.html { redirect_to @patient, notice: 'Patient was successfully created.' }
+        format.html { redirect_to "#{new_surgery_path}?patient_name=#{@patient.name}&patient_id=#{@patient.id}", notice: 'Patient was successfully created.' }
         format.json { render action: 'show', status: :created, location: @patient }
       else
         format.html { render action: 'new' }

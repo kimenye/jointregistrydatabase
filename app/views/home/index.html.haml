@@ -19,6 +19,9 @@
             %a{href: surgeries_path }
               Surgeries
           %li
+            %a{href: edit_user_registration_path }
+              Edit Account
+          %li
             %a{href: destroy_user_session_path, method: :delete, "data-method" => "delete", rel: "nofollow"}
               Log out
     - else
